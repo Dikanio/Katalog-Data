@@ -11,6 +11,21 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('create');
+// });
+
+Route::get('/', 'DataController@index');
+
+Route::post('/data/store', 'DataController@store');
+
+Route::get('/data/view', 'DataController@index');
+
+Route::get('/data/create', 'DataController@create');
+
+Route::get('/data', 'DataController@index');
+
+Route::get('/data/edit/{id}', 'DataController@edit');
+Route::post('/data/update/{id}', 'DataController@update');
+
+Route::get('/data/detail/{id}', 'DataController@show');
