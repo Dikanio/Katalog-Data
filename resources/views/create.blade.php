@@ -228,7 +228,7 @@
 
             <div class="form-group">
                 <label for="alamatSistem">URL / Alamat Sistem</label>
-                <input type="text" name="alamatSistem" placeholder="http://example.com" class="form-control" value="{{$data->pengumpulan->url_sistem}}">
+                <input type="text" name="alamatSistem" placeholder="http://example.com" class="form-control">
             </div>
 
             <div class="form-group">
@@ -255,12 +255,12 @@
         <div class="panel-body">
             <div class="form-group">
                 <label for="lembagaSurvey">Lembaga Survey</label>
-                <input type="text" name="lembagaSurvey" placeholder="Lembaga Survey" class="form-control" value="{{$data->pengumpulan->lembaga_survey}}">
+                <input type="text" name="lembagaSurvey" placeholder="Lembaga Survey" class="form-control">
             </div>
 
             <div class="form-group">
                 <label for="waktuSurvey">Waktu Survey</label>
-                <input type="date" name="waktuSurvey" placeholder="31/12/2017" class="form-control" value="{{$data->pengumpulan->waktu_survey}}">
+                <input type="date" name="waktuSurvey" placeholder="31/12/2017" class="form-control">
             </div>
         </div>
     </div>
