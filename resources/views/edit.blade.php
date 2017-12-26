@@ -44,12 +44,8 @@
 @endsection
 
 @section('content')
-<form id="regForm" action="{{url('/data/update', base64_encode($data->id_data))}}" method="POST">
-    <!-- Error expired page solver -->
+<form id="regForm" action="{{url('/data/update', base64_encode($data->id_data) )}}" method="POST">
     {{csrf_field()}}
-
-    <!-- Error 405 - Method Not Allowed -->
-    <input type="hidden" name="_method" value="PUT">
 
   <!-- One "tab" for each step in the form: -->
   <div class="tab">

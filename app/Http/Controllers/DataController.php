@@ -133,8 +133,8 @@ class DataController extends Controller
     public function edit($id)
     {
         $data = Data::find(base64_decode($id));
+        // return $data;
         return view('edit', compact('data'));
-        // return $data->pengumpulan;
     }
 
     /**
@@ -146,17 +146,10 @@ class DataController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $this->validate($request, [
-            'judulData' => 'required',
-            'dataDasar' => 'required',
-            'deskripsiData' => 'required',
-            'caraPengumpulanData' => 'required',
-            'tipeData' => 'required',
-            'penanggungJawab' => 'required',
-            'kontak' => 'required'
-        ]);
 
         $data = Data::find(base64_decode($id));
+        // $data = Data::where('id_data', base64_decode($id))->get();
+        // return $data->pengelola->id_pengelola_data;
 
         $pengelola = Pengelola::find($data->id_pengelola_data);
         $pengumpulan = Pengumpulan::find($data->id_cara_pengumpulan_data);
