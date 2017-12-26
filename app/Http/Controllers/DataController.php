@@ -72,17 +72,17 @@ class DataController extends Controller
         $data->penanggung_jawab_data = $request->input('penanggungJawab');
         $data->kontak_penanggung_jawab = $request->input('kontak');
         
-        $wali->nama_dinas = $request->input('waliData');
-        $wali->bidang_kedinasan = $request->input('bidang1');
-        $wali->seksi_kedinasan = $request->input('seksi1');
+        $wali->nama_dinas = $request->input('wldinas');
+        $wali->bidang_kedinasan = $request->input('wlbidang');
+        $wali->seksi_kedinasan = $request->input('wlseksi');
 
-        $pengelola->nama_dinas = $request->input('pengelolaData');
-        $pengelola->bidang_kedinasan = $request->input('bidang2');
-        $pengelola->seksi_kedinasan = $request->input('seksi2');
+        $pengelola->nama_dinas = $request->input('pldinas');
+        $pengelola->bidang_kedinasan = $request->input('plbidang');
+        $pengelola->seksi_kedinasan = $request->input('plseksi');
 
-        $sumber->nama_dinas = $request->input('sumberData');
-        $sumber->bidang_kedinasan = $request->input('bidang3');
-        $sumber->seksi_kedinasan = $request->input('seksi3');
+        $sumber->nama_dinas = $request->input('sbdinas');
+        $sumber->bidang_kedinasan = $request->input('sbbidang');
+        $sumber->seksi_kedinasan = $request->input('sbseksi');
 
         if($request->input('caraPengumpulanData') == "sistem") {
             $pengumpulan->nama_sistem = $request->input('namaSistem');
@@ -176,17 +176,17 @@ class DataController extends Controller
         $data->penanggung_jawab_data = $request->input('penanggungJawab');
         $data->kontak_penanggung_jawab = $request->input('kontak');
         
-        $wali->nama_dinas = $request->input('waliData');
-        $wali->bidang_kedinasan = $request->input('bidang1');
-        $wali->seksi_kedinasan = $request->input('seksi1');
+        $wali->nama_dinas = $request->input('wldinas');
+        $wali->bidang_kedinasan = $request->input('wlbidang');
+        $wali->seksi_kedinasan = $request->input('wlseksi');
 
-        $pengelola->nama_dinas = $request->input('pengelolaData');
-        $pengelola->bidang_kedinasan = $request->input('bidang2');
-        $pengelola->seksi_kedinasan = $request->input('seksi2');
+        $pengelola->nama_dinas = $request->input('pldinas');
+        $pengelola->bidang_kedinasan = $request->input('plbidang');
+        $pengelola->seksi_kedinasan = $request->input('plseksi');
 
-        $sumber->nama_dinas = $request->input('sumberData');
-        $sumber->bidang_kedinasan = $request->input('bidang3');
-        $sumber->seksi_kedinasan = $request->input('seksi3');
+        $sumber->nama_dinas = $request->input('sbdinas');
+        $sumber->bidang_kedinasan = $request->input('sbbidang');
+        $sumber->seksi_kedinasan = $request->input('sbseksi');
 
         if($request->input('caraPengumpulanData') == "sistem") {
             $pengumpulan->nama_sistem = $request->input('namaSistem');

@@ -124,22 +124,19 @@
         </div>
         <div class="panel-body">
             <div class="form-group">
-                <input placeholder="Nama Dinas / Instansi" oninput="this.className = ''" name="waliData" class="form-control">
-            </div>
-            <div class="form-group">
-                <select id="bidang1" name="bidang1" class="form-control">
-                    <option>Pilih Bidang Kedinasan</option>
-                    <option>Bidang 1</option>
-                    <option>Bidang 2</option>
-                    <option>Bidang 3</option>
+                <select name="wldinas" class="form-control">
+                    <option>Pilih Dinas/Instansi</option>                    
                 </select>
             </div>
             <div class="form-group">
-                <select id="seksi1" name="seksi1" class="form-control">
+                <select name="wlbidang" class="form-control">
+                    <option>Pilih Bidang Kedinasan</option>                    
+                </select>
+            </div>
+            <div class="form-group">
+                <select name="wlseksi" class="form-control">
                     <option>Pilih Seksi Kedinasan</option>
-                    <option>Seksi 1</option>
-                    <option>Seksi 2</option>
-                    <option>Seksi 3</option>
+                    
                 </select>
             </div>
         </div>
@@ -151,23 +148,20 @@
         </div>
         <div class="panel-body">
             <div class="form-group">
-                <input placeholder="Nama Dinas / Instansi" oninput="this.className = ''" name="pengelolaData" class="form-control">
-            </div>
-            <div class="form-group">
-                <select id="bidang2" name="bidang2" class="form-control">
-                    <option>Pilih Bidang Kedinasan</option>
-                    <option>Bidang 1</option>
-                    <option>Bidang 2</option>
-                    <option>Bidang 3</option>
+                <select name="pldinas" class="form-control">
+                    <option>Pilih Dinas/Instansi</option>                    
                 </select>
             </div>
             <div class="form-group">
-            <select id="seksi2" name="seksi2" class="form-control">
-                <option>Pilih Seksi Kedinasan</option>
-                <option>Seksi 1</option>
-                <option>Seksi 2</option>
-                <option>Seksi 3</option>
-            </select>
+                <select name="plbidang" class="form-control">
+                    <option>Pilih Bidang Kedinasan</option>                    
+                </select>
+            </div>
+            <div class="form-group">
+                <select name="plseksi" class="form-control">
+                    <option>Pilih Seksi Kedinasan</option>
+                    
+                </select>
             </div>
         </div>
     </div>
@@ -178,23 +172,21 @@
         </div>
         <div class="panel-body">
             <div class="form-group">
-                <input placeholder="Nama Dinas / Instansi" oninput="this.className = ''" name="sumberData" class="form-control">
-            </div>
-            <div class="form-group">
-                <select id="bidang3" name="bidang3" class="form-control">
-                    <option>Pilih Bidang Kedinasan</option>
-                    <option>Bidang 1</option>
-                    <option>Bidang 2</option>
-                    <option>Bidang 3</option>
+                <select name="sbdinas" class="form-control">
+                    <option>Pilih Dinas/Instansi</option>
+                    
                 </select>
             </div>
             <div class="form-group">
-            <select id="seksi3" name="seksi3" class="form-control">
-                <option>Pilih Seksi Kedinasan</option>
-                <option>Seksi 1</option>
-                <option>Seksi 2</option>
-                <option>Seksi 3</option>
-            </select>
+                <select name="sbbidang" class="form-control">
+                    <option>Pilih Bidang Kedinasan</option>
+                
+                </select>
+            </div>
+            <div class="form-group">
+                <select name="sbseksi" class="form-control">
+                    <option>Pilih Seksi Kedinasan</option>            
+                </select>
             </div>
         </div>
     </div>
