@@ -408,7 +408,6 @@
         },
         {
             "name": "laravel/framework",
-<<<<<<< HEAD
             "version": "v5.5.27",
             "source": {
                 "type": "git",
@@ -419,18 +418,6 @@
                 "type": "zip",
                 "url": "https://api.github.com/repos/laravel/framework/zipball/b4fb6eeb227b7327b4ca7f92263b693ec9ac9875",
                 "reference": "b4fb6eeb227b7327b4ca7f92263b693ec9ac9875",
-=======
-            "version": "v5.5.26",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/laravel/framework.git",
-                "reference": "d7e6a7aab600c5cfae595ea22074ac3c536cbc28"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/laravel/framework/zipball/d7e6a7aab600c5cfae595ea22074ac3c536cbc28",
-                "reference": "d7e6a7aab600c5cfae595ea22074ac3c536cbc28",
->>>>>>> 42c0d5dcbb6c8e885b94021d3bdf47c2e84b7abc
                 "shasum": ""
             },
             "require": {
@@ -551,7 +538,7 @@
                 "framework",
                 "laravel"
             ],
-            "time": "2017-12-18T14:15:59+00:00"
+            "time": "2017-12-20T15:43:48+00:00"
         },
         {
             "name": "laravel/tinker",
@@ -3318,7 +3305,6 @@
         },
         {
             "name": "sebastian/comparator",
-<<<<<<< HEAD
             "version": "2.1.1",
             "source": {
                 "type": "git",
@@ -3329,18 +3315,6 @@
                 "type": "zip",
                 "url": "https://api.github.com/repos/sebastianbergmann/comparator/zipball/b11c729f95109b56a0fe9650c6a63a0fcd8c439f",
                 "reference": "b11c729f95109b56a0fe9650c6a63a0fcd8c439f",
-=======
-            "version": "2.1.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/sebastianbergmann/comparator.git",
-                "reference": "1174d9018191e93cb9d719edec01257fc05f8158"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/comparator/zipball/1174d9018191e93cb9d719edec01257fc05f8158",
-                "reference": "1174d9018191e93cb9d719edec01257fc05f8158",
->>>>>>> 42c0d5dcbb6c8e885b94021d3bdf47c2e84b7abc
                 "shasum": ""
             },
             "require": {
@@ -3391,11 +3365,7 @@
                 "compare",
                 "equality"
             ],
-<<<<<<< HEAD
             "time": "2017-12-22T14:50:35+00:00"
-=======
-            "time": "2017-11-03T07:16:52+00:00"
->>>>>>> 42c0d5dcbb6c8e885b94021d3bdf47c2e84b7abc
         },
         {
             "name": "sebastian/diff",
