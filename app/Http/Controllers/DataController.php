@@ -9,6 +9,8 @@ use App\Pengelola;
 use App\Pengumpulan;
 use App\Sumber;
 use App\Wali;
+use App\Kedinasan;
+use Response;
 
 class DataController extends Controller
 {
@@ -30,7 +32,8 @@ class DataController extends Controller
      */
     public function create()
     {
-        return view('create');
+        $data = Kedinasan::distinct()->select('id_nama_dinas', 'nama_dinas')->get();
+        return view('create',['data'=>$data]);
     }
 
     /**
@@ -218,4 +221,33 @@ class DataController extends Controller
     {
         //
     }
+
+    public function getBidang($param){
+      //GET THE ACCOUNT BASED ON TYPE
+      $bidang = Kedinasan::where('id_nama_dinas','=',$param)->get();
+      //CREATE AN ARRAY 
+      $options = array();      
+      foreach ($bidang as $arrayForEach) {
+                $options += array($arrayForEach->id_bidang_kedinasan => $arrayForEach->bidang_kedinasan);                
+            }
+      
+      // echo json_encode($option);
+      // die();
+      return Response::json($options);
+
+    }
+
+    public function getSeksi($param){
+      //GET THE ACCOUNT BASED ON TYPE
+      $seksi = Kedinasan::where('id_bidang_kedinasan','=',$param)->get();
+      //CREATE AN ARRAY 
+      $options = array();      
+      foreach ($seksi as $arrayForEach) {
+                $options += array($arrayForEach->id_seksi_kedinasan => $arrayForEach->seksi_kedinasan);                
+            }
+      
+      return Response::json($options);
+
+    }
+
 }

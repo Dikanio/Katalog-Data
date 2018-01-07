@@ -22,6 +22,9 @@ Route::post('/data/store', 'DataController@store');
 Route::get('/data/view', 'DataController@index');
 
 Route::get('/data/create', 'DataController@create');
+Route::get('/data/create/getBidang/{param}','DataController@getBidang');
+Route::get('/data/create/getSeksi/{param}','DataController@getSeksi');
+
 
 Route::get('/data', 'DataController@index');
 

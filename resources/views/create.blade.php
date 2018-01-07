@@ -124,18 +124,21 @@
         </div>
         <div class="panel-body">
             <div class="form-group">
-                <select name="wldinas" class="form-control">
-                    <option>Pilih Dinas/Instansi</option>                    
+                <select name="wldinas" class="form-control" id="walDinas">
+                    <option disabled selected>Pilih Dinas/Instansi</option>
+                    @foreach($data as $ids)
+                        <option value="{{$ids->id_nama_dinas}}"> {{$ids->nama_dinas}} </option>
+                    @endforeach                    
                 </select>
             </div>
             <div class="form-group">
-                <select name="wlbidang" class="form-control">
-                    <option>Pilih Bidang Kedinasan</option>                    
+                <select name="wlbidang" class="form-control" id="walBidang">
+                    <option disabled selected value="">Pilih Bidang Kedinasan</option>                    
                 </select>
             </div>
             <div class="form-group">
-                <select name="wlseksi" class="form-control">
-                    <option>Pilih Seksi Kedinasan</option>
+                <select name="wlseksi" class="form-control" id="walSeksi">
+                    <option disabled selected value="">Pilih Seksi Kedinasan</option>
                     
                 </select>
             </div>
@@ -148,18 +151,21 @@
         </div>
         <div class="panel-body">
             <div class="form-group">
-                <select name="pldinas" class="form-control">
+                <select name="pldinas" class="form-control" id="pelDinas">
                     <option>Pilih Dinas/Instansi</option>                    
+                    @foreach($data as $ids)
+                        <option value="{{$ids->id_nama_dinas}}"> {{$ids->nama_dinas}} </option>
+                    @endforeach                    
                 </select>
             </div>
             <div class="form-group">
-                <select name="plbidang" class="form-control">
-                    <option>Pilih Bidang Kedinasan</option>                    
+                <select name="plbidang" class="form-control" id="pelBidang">
+                    <option disabled selected value="">Pilih Bidang Kedinasan</option>                    
                 </select>
             </div>
             <div class="form-group">
-                <select name="plseksi" class="form-control">
-                    <option>Pilih Seksi Kedinasan</option>
+                <select name="plseksi" class="form-control" id="pelSeksi">
+                    <option disabled selected value="">Pilih Seksi Kedinasan</option>
                     
                 </select>
             </div>
@@ -172,20 +178,22 @@
         </div>
         <div class="panel-body">
             <div class="form-group">
-                <select name="sbdinas" class="form-control">
+                <select name="sbdinas" class="form-control" id="subDinas">
                     <option>Pilih Dinas/Instansi</option>
-                    
+                    @foreach($data as $ids)
+                        <option value="{{$ids->id_nama_dinas}}"> {{$ids->nama_dinas}} </option>
+                    @endforeach                    
                 </select>
             </div>
             <div class="form-group">
-                <select name="sbbidang" class="form-control">
-                    <option>Pilih Bidang Kedinasan</option>
+                <select name="sbbidang" class="form-control" id="subBidang">
+                    <option disabled selected value="">Pilih Bidang Kedinasan</option>
                 
                 </select>
             </div>
             <div class="form-group">
-                <select name="sbseksi" class="form-control">
-                    <option>Pilih Seksi Kedinasan</option>            
+                <select name="sbseksi" class="form-control" id="subSeksi">
+                    <option disabled selected value="">Pilih Seksi Kedinasan</option>            
                 </select>
             </div>
         </div>
@@ -337,6 +345,10 @@
     <span class="step"></span>
   </div>
 </form>
+
+<script type="text/javascript" src='{{URL::asset("js/jquery-1.12.4.min.js")}}'></script>
+<script type="text/javascript" src='{{URL::asset("js/chained-selection.js")}}'></script>
+
 @endsection
 
 @section('js')
@@ -430,5 +442,8 @@
     //... and adds the "active" class on the current step:
     x[n].className += " active";
     }
+
+    
+
 </script>       
 @endsection
