@@ -6,7 +6,7 @@
 
     $("#walDinas").change(function() {
 
-            $.getJSON(host + "getBidang/" + $("#walDinas option:selected").val(), function(data) {
+            $.getJSON(host + "/getBidang/" + $("#walDinas option:selected").val(), function(data) {
              //console.log(data);            
                 var temp = [];
                 //CONVERT INTO ARRAY
@@ -33,7 +33,7 @@
 
         $("#walBidang").change(function() {
 
-            $.getJSON(host + "getSeksi/" + $("#walBidang option:selected").val(), function(data) {
+            $.getJSON(host + "/getSeksi/" + $("#walBidang option:selected").val(), function(data) {
                 //console.log(data);
                 var temp = [];
                 //CONVERT INTO ARRAY
@@ -60,7 +60,7 @@
 
         $("#pelDinas").change(function() {
 
-            $.getJSON(host + "getBidang/" + $("#pelDinas option:selected").val(), function(data) {
+            $.getJSON(host + "/getBidang/" + $("#pelDinas option:selected").val(), function(data) {
              //console.log(data);            
                 var temp = [];
                 //CONVERT INTO ARRAY
@@ -87,7 +87,7 @@
 
         $("#pelBidang").change(function() {
 
-            $.getJSON(host + "getSeksi/" + $("#pelBidang option:selected").val(), function(data) {
+            $.getJSON(host + "/getSeksi/" + $("#pelBidang option:selected").val(), function(data) {
                 //console.log(data);
                 var temp = [];
                 //CONVERT INTO ARRAY
@@ -114,7 +114,7 @@
 
         $("#subDinas").change(function() {
 
-            $.getJSON(host + "getBidang/" + $("#subDinas option:selected").val(), function(data) {
+            $.getJSON(host + "/getBidang/" + $("#subDinas option:selected").val(), function(data) {
              //console.log(data);            
                 var temp = [];
                 //CONVERT INTO ARRAY
@@ -141,7 +141,7 @@
 
         $("#subBidang").change(function() {
 
-            $.getJSON(host + "getSeksi/" + $("#subBidang option:selected").val(), function(data) {
+            $.getJSON(host + "/getSeksi/" + $("#subBidang option:selected").val(), function(data) {
                 //console.log(data);
                 var temp = [];
                 //CONVERT INTO ARRAY
