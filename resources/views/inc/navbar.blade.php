@@ -16,7 +16,34 @@
         <li class="link"><a href="/data/view">View</a></li>
     </ul>
     <ul class="nav navbar-nav navbar-right">
-        <li><a href="#">KATALOG DATA KOTA BANDUNG</a></li>
+        @if (Route::has('login'))
+            <div class="top-right links">
+                @auth
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true">
+                            {{ Auth::user()->name }} <span class="caret"></span>
+                        </a>
+
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a href="{{ route('logout') }}"
+                                    onclick="event.preventDefault();
+                                             document.getElementById('logout-form').submit();">
+                                    Logout
+                                </a>
+
+                                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                    {{ csrf_field() }}
+                                </form>
+                            </li>
+                        </ul>
+                    </li>
+                @else
+                    <a href="{{ route('login') }}">Login</a>
+                    <a href="{{ route('register') }}">Register</a>
+                @endauth
+            </div>
+        @endif
     </ul>
     </div><!--/.nav-collapse -->
 </div><!--/.container-fluid -->

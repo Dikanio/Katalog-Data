@@ -32,3 +32,7 @@ Route::get('/data/edit/{id}', 'DataController@edit');
 Route::post('/data/update/{id}', 'DataController@update');
 
 Route::get('/data/detail/{id}', 'DataController@show');
+
+Auth::routes();
+
+Route::get('/home', 'DataController@index')->name('home');

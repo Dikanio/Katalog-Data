@@ -1,3 +1,5 @@
+@if (Route::has('login'))
+@auth
 <!DOCTYPE html>
 <html>
 <head>
@@ -25,6 +27,14 @@
         </div>
         </div>
     </div>
+    <!-- Scripts -->
+    <script src="{{ asset('js/app.js') }}"></script>
     @yield('js')
 </body>
 </html>
+
+
+@else
+    <script type="text/javascript">window.location = "/login";</script>
+@endauth
+@endif

@@ -74,8 +74,10 @@ class DataController extends Controller
         $data->penglevelan_kategori_lain = $request->input('level');
         $data->penanggung_jawab_data = $request->input('penanggungJawab');
         $data->kontak_penanggung_jawab = $request->input('kontak');
+
+        $id_wali = $request->input('wldinas');
+        $wali->nama_dinas = Kedinasan::distinct()->select('nama_dinas')->where('id_nama_dinas', $id_wali)->get();
         
-        $wali->nama_dinas = $request->input('wldinas');
         $wali->bidang_kedinasan = $request->input('wlbidang');
         $wali->seksi_kedinasan = $request->input('wlseksi');
 
