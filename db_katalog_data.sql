@@ -1,6 +1,6 @@
 /*
-SQLyog Ultimate v12.09 (64 bit)
-MySQL - 10.1.26-MariaDB : Database - db_katalog_data
+SQLyog Ultimate v12.09 (32 bit)
+MySQL - 10.1.29-MariaDB : Database - db_katalog_data
 *********************************************************************
 */
 
@@ -16,6 +16,34 @@ CREATE DATABASE /*!32312 IF NOT EXISTS*/`db_katalog_data` /*!40100 DEFAULT CHARA
 
 USE `db_katalog_data`;
 
+/*Table structure for table `migrations` */
+
+DROP TABLE IF EXISTS `migrations`;
+
+CREATE TABLE `migrations` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `migration` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `batch` int(11) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+/*Data for the table `migrations` */
+
+insert  into `migrations`(`id`,`migration`,`batch`) values (1,'2014_10_12_000000_create_users_table',1),(2,'2014_10_12_100000_create_password_resets_table',1);
+
+/*Table structure for table `password_resets` */
+
+DROP TABLE IF EXISTS `password_resets`;
+
+CREATE TABLE `password_resets` (
+  `email` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `token` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  KEY `password_resets_email_index` (`email`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+/*Data for the table `password_resets` */
+
 /*Table structure for table `tbl_cara_pengumpulan_data` */
 
 DROP TABLE IF EXISTS `tbl_cara_pengumpulan_data`;
@@ -28,11 +56,11 @@ CREATE TABLE `tbl_cara_pengumpulan_data` (
   `lembaga_survey` varchar(255) DEFAULT NULL,
   `waktu_survey` date DEFAULT NULL,
   PRIMARY KEY (`id_cara_pengumpulan_data`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=latin1;
 
 /*Data for the table `tbl_cara_pengumpulan_data` */
 
-insert  into `tbl_cara_pengumpulan_data`(`id_cara_pengumpulan_data`,`nama_sistem`,`url_sistem`,`pemilik_sistem`,`lembaga_survey`,`waktu_survey`) values (1,'Sistem','site','pusat',NULL,NULL),(2,NULL,NULL,'','ini survey','2014-08-11');
+insert  into `tbl_cara_pengumpulan_data`(`id_cara_pengumpulan_data`,`nama_sistem`,`url_sistem`,`pemilik_sistem`,`lembaga_survey`,`waktu_survey`) values (1,'Sistem','site','pusat',NULL,NULL),(2,NULL,NULL,'','ini survey','2014-08-11'),(3,'Ini Nama Sistem','Ini URL Sistem','pusat',NULL,NULL),(5,NULL,NULL,NULL,NULL,NULL),(6,NULL,NULL,NULL,NULL,NULL),(7,NULL,NULL,NULL,NULL,NULL),(8,NULL,NULL,NULL,NULL,NULL),(9,NULL,NULL,NULL,NULL,NULL),(10,'Ini Sistem','Ini URL','pusat',NULL,NULL),(11,'asda','asdaas','pusat',NULL,NULL),(12,'Sistem Sekarang','URL Sekarang','pusat',NULL,NULL),(13,'Sistem Sekarang','URL Sistem','kota',NULL,NULL),(14,'zdadasd','asdasd','pusat',NULL,NULL);
 
 /*Table structure for table `tbl_data` */
 
@@ -63,11 +91,11 @@ CREATE TABLE `tbl_data` (
   KEY `id_fk_wali_data` (`id_wali_data`),
   KEY `id_fk_pengelola_data` (`id_pengelola_data`),
   KEY `id_fk_sumber_data` (`id_sumber_data`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=latin1;
 
 /*Data for the table `tbl_data` */
 
-insert  into `tbl_data`(`id_data`,`id_wali_data`,`id_pengelola_data`,`id_sumber_data`,`id_cara_pengumpulan_data`,`judul_data`,`jenis_data`,`data_dasar`,`deskripsi_data`,`sektor_data`,`periode_kemunculan_data`,`tahun_mulai_tersedia`,`tipe_data`,`level_penyajian_data`,`penglevelan_kategori_lain`,`penanggung_jawab_data`,`kontak_penanggung_jawab`,`created_at`,`updated_at`) values (1,1,1,1,'1','Judul','Data Transaksi','Data','Desc','Bidang Perumahan Dan Kawasan Permukiman','Harian',2017,'Data yang Diperoleh Sewaktu-waktu','Kecamatan','kategori lain','pj','kj','2017-12-21 08:21:24','2017-12-21 08:21:24'),(2,2,2,2,'2','testo2','Log Data','ini data dasar','teset','Bidang Kesehatan','Harian',2016,'Data yang Dikecualikan','RT','kategori lain','saya penanggung jawab','0194389814','2017-12-21 15:50:52','2017-12-21 17:29:41');
+insert  into `tbl_data`(`id_data`,`id_wali_data`,`id_pengelola_data`,`id_sumber_data`,`id_cara_pengumpulan_data`,`judul_data`,`jenis_data`,`data_dasar`,`deskripsi_data`,`sektor_data`,`periode_kemunculan_data`,`tahun_mulai_tersedia`,`tipe_data`,`level_penyajian_data`,`penglevelan_kategori_lain`,`penanggung_jawab_data`,`kontak_penanggung_jawab`,`created_at`,`updated_at`) values (1,1,1,1,'1','Judul','Data Transaksi','Data','Desc','Bidang Perumahan Dan Kawasan Permukiman','Harian',2017,'Data yang Diperoleh Sewaktu-waktu','Kecamatan','kategori lain','pj','kj','2017-12-21 08:21:24','2017-12-21 08:21:24'),(2,2,2,2,'2','testo2','Log Data','ini data dasar','teset','Bidang Kesehatan','Harian',2016,'Data yang Dikecualikan','RT','kategori lain','saya penanggung jawab','0194389814','2017-12-21 15:50:52','2017-12-21 17:29:41'),(3,5,5,5,'5','Ini Judul','Data Master','Ini Data Dasar','Ini Deskripsi','Bidang Kesehatan','Harian',2017,'Data yang Dikecualikan','RT',NULL,'Saya','085123345123','2017-12-29 19:11:28','2017-12-29 19:11:28'),(4,6,6,6,'6','Ini Judul','Data Transaksi','Ini Data Dasar','Ini Deskripsi','Bidang Pekerjaan Umum Dan Penataan Ruang','Harian',2017,'Data yang Dikecualikan','RT',NULL,'Saya','085123123123','2018-01-07 15:02:47','2018-01-07 15:02:47'),(5,7,7,7,'7','ada','Data Master','asa','aea','Bidang Kesehatan','Harian',2017,'Data yang Dikecualikan','RT',NULL,'Saya','085123123123','2018-01-07 15:34:49','2018-01-07 15:34:49'),(6,8,8,8,'8','asa','Data Master','ada','aea','Bidang Kesehatan','Harian',2017,'Data yang Dikecualikan','RT',NULL,'saya','085123123123','2018-01-07 15:41:09','2018-01-07 15:41:09'),(7,9,9,9,'9','sdvgfsd','Data Master','sfdgx','fdghd','Bidang Kesehatan','Harian',2017,'Data yang Dikecualikan','RT',NULL,'sdfgs','2342','2018-01-12 09:47:27','2018-01-12 09:47:27'),(8,10,10,10,'10','Ini Judul','Data Master','Ini Data Dasar','Ini Desk','Bidang Kesehatan','Mingguan',2018,'Data yang Dikecualikan','RT',NULL,'Ini Penanggung','085123123123','2018-01-12 15:13:39','2018-01-12 15:13:39'),(9,11,11,11,'11','asdasd','Data Master','asdasd','asdasd','Bidang Kesehatan','Harian',2018,'Data yang Dikecualikan','RT',NULL,'asda','085123123123','2018-01-12 15:32:12','2018-01-12 15:32:12'),(10,12,12,12,'12','Yang Sekarang','Data Master','Dasar Sekarang','Deskripsi Sekarang','Bidang Kesehatan','Harian',2018,'Data yang Dikecualikan','RT',NULL,'Penanggung Sekarang','085123345123','2018-01-12 15:34:39','2018-01-12 15:34:39'),(11,13,13,13,'13','Sekarang 2nd','Data Master','Ini Sekarang','Ini Deskripsi','Bidang Kesehatan','Harian',2018,'Data yang Dikecualikan','RT',NULL,'asdasd','085123123123','2018-01-12 15:47:18','2018-01-12 15:47:18'),(12,14,14,14,'14','Sekarang 3rd','Data Master','asda','asdasd','Bidang Kesehatan','Harian',2018,'Data yang Dikecualikan','RT',NULL,'asdasd','085123123123','2018-01-12 15:54:56','2018-01-12 15:54:56');
 
 /*Table structure for table `tbl_kedinasan` */
 
@@ -96,11 +124,11 @@ CREATE TABLE `tbl_pengelola_data` (
   `bidang_kedinasan` varchar(255) DEFAULT NULL,
   `seksi_kedinasan` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id_pengelola_data`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=latin1;
 
 /*Data for the table `tbl_pengelola_data` */
 
-insert  into `tbl_pengelola_data`(`id_pengelola_data`,`nama_dinas`,`bidang_kedinasan`,`seksi_kedinasan`) values (1,'Pengelola','Bidang 2','Seksi 2'),(2,'test','Bidang 2','Seksi 2');
+insert  into `tbl_pengelola_data`(`id_pengelola_data`,`nama_dinas`,`bidang_kedinasan`,`seksi_kedinasan`) values (1,'Pengelola','Bidang 2','Seksi 2'),(2,'test','Bidang 2','Seksi 2'),(3,'Pilih Dinas/Instansi','Pilih Bidang Kedinasan','Pilih Seksi Kedinasan'),(5,'Pilih Dinas/Instansi','Pilih Bidang Kedinasan','Pilih Seksi Kedinasan'),(6,'2B8EA','F44B5','5C3B4'),(7,'F7D13','16FEE','8D685'),(8,'2B8EA','5E52B','E458A'),(9,'554D0','B1CB0','58FE7'),(10,'C7208','E55D6','B835A'),(11,'[]','DF664','6DB18'),(12,'[]','B1CB0','975D2'),(13,'[]','2DD0B','0DD90'),(14,'EB088','EE3D0','D6BB8');
 
 /*Table structure for table `tbl_sumber_data` */
 
@@ -113,11 +141,11 @@ CREATE TABLE `tbl_sumber_data` (
   `seksi_kedinasan` varchar(255) DEFAULT NULL,
   `cara_pengumpulan_data` varchar(10) DEFAULT NULL,
   PRIMARY KEY (`id_sumber_data`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=latin1;
 
 /*Data for the table `tbl_sumber_data` */
 
-insert  into `tbl_sumber_data`(`id_sumber_data`,`nama_dinas`,`bidang_kedinasan`,`seksi_kedinasan`,`cara_pengumpulan_data`) values (1,'Sumber','Bidang 3','Seksi 3',NULL),(2,'test','Bidang 2','Seksi 3',NULL);
+insert  into `tbl_sumber_data`(`id_sumber_data`,`nama_dinas`,`bidang_kedinasan`,`seksi_kedinasan`,`cara_pengumpulan_data`) values (1,'Sumber','Bidang 3','Seksi 3',NULL),(2,'test','Bidang 2','Seksi 3',NULL),(3,'Pilih Dinas/Instansi','Pilih Bidang Kedinasan','Pilih Seksi Kedinasan',NULL),(5,'Pilih Dinas/Instansi','Pilih Bidang Kedinasan','Pilih Seksi Kedinasan',NULL),(6,'70017','6CE2B','BD753',NULL),(7,'BF543','000CA','BA14B',NULL),(8,'F7D13','DF664','6DB18',NULL),(9,'F7D13','16FEE','8D685',NULL),(10,'70017','6CE2B','F5BE3',NULL),(11,'[]','8A28B','3AF09',NULL),(12,'[]','16FEE','38CE9',NULL),(13,'[]','9FD3A','E6E9D',NULL),(14,'554D0','2E342','D215D',NULL);
 
 /*Table structure for table `tbl_wali_data` */
 
@@ -129,11 +157,31 @@ CREATE TABLE `tbl_wali_data` (
   `bidang_kedinasan` varchar(255) DEFAULT NULL,
   `seksi_kedinasan` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id_wali_data`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=latin1;
 
 /*Data for the table `tbl_wali_data` */
 
-insert  into `tbl_wali_data`(`id_wali_data`,`nama_dinas`,`bidang_kedinasan`,`seksi_kedinasan`) values (1,'Wali','Bidang 1','Seksi 1'),(2,'wali','Bidang 1','Seksi 1');
+insert  into `tbl_wali_data`(`id_wali_data`,`nama_dinas`,`bidang_kedinasan`,`seksi_kedinasan`) values (1,'Wali','Bidang 1','Seksi 1'),(2,'wali','Bidang 1','Seksi 1'),(3,'Pilih Dinas/Instansi','Pilih Bidang Kedinasan','Pilih Seksi Kedinasan'),(5,'Pilih Dinas/Instansi','Pilih Bidang Kedinasan','Pilih Seksi Kedinasan'),(6,'554D0','2E342','D215D'),(7,'554D0','2DD0B','8FBA1'),(8,NULL,'8A28B','60BFE'),(9,'5272B','44283','0AE49'),(10,'554D0','B1CB0','58FE7'),(11,'[{\"nama_dinas\":\"Dinas Pengendalian Penduduk dan Keluarga Berencana\"}]','16FEE','38CE9'),(12,'[{\"nama_dinas\":\"Dinas Pengendalian Penduduk dan Keluarga Berencana\"}]','16FEE','38CE9'),(13,'[{\"nama_dinas\":\"Dinas Perhubungan\"}]','9FD3A','72F58'),(14,'[{\"nama_dinas\":\"Dinas Penataan Ruang\"}]','06743','D73AC');
+
+/*Table structure for table `users` */
+
+DROP TABLE IF EXISTS `users`;
+
+CREATE TABLE `users` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `name` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `email` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `password` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `remember_token` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `users_email_unique` (`email`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+/*Data for the table `users` */
+
+insert  into `users`(`id`,`name`,`email`,`password`,`remember_token`,`created_at`,`updated_at`) values (1,'Heru','heruherdiansyah21@gmail.com','$2y$10$wkyxF2WLXgIBcysVxWxpQuTBCvw15QsR9pzooPjoCTA0CpY6kG9K.','a7dSnZNF7Vrns6XSKAkcMz9UIhoPPyPOhyKzMEzcUXqEOAZrSj6782WlZi3s','2018-01-12 09:06:03','2018-01-12 09:06:03');
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
 /*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
