@@ -15,7 +15,13 @@
 //     return view('create');
 // });
 
-Route::get('/', 'DataController@index');
+Route::get('/', function() {
+    if(Auth::guest()){
+        return view('auth.login');
+    } else {
+        redirect('/');
+    }
+});
 
 Route::post('/data/store', 'DataController@store');
 
