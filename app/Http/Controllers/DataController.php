@@ -11,7 +11,7 @@ use App\Sumber;
 use App\Wali;
 use App\Kedinasan;
 use DB;
-
+//use Validator;
 use Response;
 
 class DataController extends Controller
@@ -46,15 +46,36 @@ class DataController extends Controller
      */
     public function store(Request $request)
     {
-        // $this->validate($request, [
-        //     'judulData' => 'required',
-        //     'dataDasar' => 'required',
-        //     'deskripsiData' => 'required',
-        //     'caraPengumpulanData' => 'required',
-        //     'tipeData' => 'required',
-        //     'penanggungJawab' => 'required',
-        //     'kontak' => 'required'
-        // ]);
+        $this->validate($request, [
+            'judulData' => 'required',
+            'jenisData' => 'required',
+            'dataDasar' => 'required',
+            'deskripsiData' => 'required',
+            'jenisData' => 'required|not_in:Pilih Jenis Data',
+            'sektorData' => 'required|not_in:Pilih Sektor Data',
+            'wldinas' => 'required|not_in:Pilih Dinas/Instansi',
+            'wlbidang' => 'required|not_in:Pilih Bidang Kedinasan',
+            'wlseksi' => 'required|not_in:Pilih Seksi Kedinasan',
+            'pldinas' => 'required|not_in:Pilih Dinas/Instansi',
+            'plbidang' => 'required|not_in:Pilih Bidang Kedinasan',
+            'plseksi' => 'required|not_in:Pilih Seksi Kedinasan',
+            'sbdinas' => 'required|not_in:Pilih Dinas/Instansi',
+            'sbbidang' => 'required|not_in:Pilih Bidang Kedinasan',
+            'sbseksi' => 'required|not_in:Pilih Seksi Kedinasan',
+            'kemunculanData' => 'required|not_in:Pilih Periode',
+            'tipeData' => 'required|not_in:Pilih Tipe Data',
+            'levelGeo' => 'required|not_in:Pilih Level Penyajian Data Secara Geografis',
+            //'caraPengumpulanData' => 'required',
+            //'namaSistem' => 'required',
+            //'alamatSistem' => 'required',
+            //'lembagaSurvey' => 'required',
+            //'waktuSurvey' => 'required',
+            'tahunTersedia' => 'required',
+            //'tipeData' => 'required',
+            'penanggungJawab' => 'required',
+            'kontak' => 'required'
+        ]);
+
 
         $data = new Data;
         $pengelola = new Pengelola;
@@ -159,6 +180,7 @@ class DataController extends Controller
         $data->save();
 
         return redirect('/')->with('success', 'Data Ditambahkan');
+        
     }
 
     /**

@@ -36,6 +36,35 @@
     .step.finish {
         background-color: #4CAF50;
     }
+
+    .form-group.required .control-label:after{
+        content:"*";
+        color:red;
+        font-size: 20px;
+    }
+
+    .tab.panel-group .control-label:after{
+        content:"*";
+        color:red;
+        font-size: 20px;
+    }
+
+    .label-required{
+        color:red;
+        font-size: 11px;
+        /*font-style: italic;*/
+    }
+
+    bintang{
+        color:red;
+        font-size: 22px;
+        font-weight: bold;
+    }
+
+    .text-danger{
+        color: red;
+        font-style: italic;
+    }
 </style>
 @endsection
 
@@ -50,33 +79,41 @@
 
   <!-- One "tab" for each step in the form: -->
   <div class="tab">
-    <div class="form-group">
-        <label for="judulData">Judul Data</label>
+    <div class="form-group required required">
+        <label for="judulData" class="control-label">Judul Data</label>
         <input class="form-control" placeholder="Judul Data" type="text" name="judulData">
+        @if ($errors->has('judulData'))
+
+            <span class="text-danger">The 'judul data' field is required.</span>
+
+        @endif
     </div>
-    
-    <div class="form-group">
-        <label for="jenisData">Jenis Data</label>
+    <div class="form-group required">
+        <label for="jenisData" class="control-label">Jenis Data</label>
         <select class="form-control" name="jenisData">
+            <option disabled selected>Pilih Jenis Data</option>
     		<option value="Data Master">Data Master</option>
     		<option value="Data Agregat">Data Agregat</option>
     		<option value="Data Transaksi">Data Transaksi</option>
     		<option value="Log Data">Log Data</option>
     		<option value="Data Laporan">Data Laporan</option>
     	</select>
+        @if ($errors->has('jenisData'))
+
+            <span class="text-danger">The 'jenis data' field is required.</span>
+
+        @endif
     </div>
 
-    <div class="form-group">
-        <label for="sektorData">Sektor Data</label>
+    <div class="form-group required">
+        <label for="sektorData" class="control-label">Sektor Data</label>
         <select name="sektorData" id="" class="form-control">
+            <option disabled selected>Pilih Sektor Data</option>
             <option>Bidang Kesehatan</option>
             <option>Bidang Pekerjaan Umum Dan Penataan Ruang</option>
             <option>Bidang Perumahan Dan Kawasan Permukiman</option>
             <option>Bidang Ketenteraman Dan Ketertiban Umum Serta Perlindungan</option>
             <option>Bidang Sosial</option>
-
-            <!-- Uncomment kalau Edit udah selesai -->
-        <!-- 
             <option>Bidang Tenaga Kerja</option>
             <option>Bidang Pemberdayaan Perempuan Dan Pelindungan Anak</option>
             <option>Bidang Pangan</option>
@@ -102,107 +139,164 @@
             <option>Bidang Perindustrian</option>
             <option>Bidang Transmigrasi</option>
             <option>Bidang Otonomi Daerah, Pemerintahan Umum, Administrasi Keuangan Daerah, Perangkat Daerah, Kepegawaian, Persandian</option>
-        -->
+       
         </select>
+        @if ($errors->has('sektorData'))
+
+            <span class="text-danger">The 'sektor data' field is required.</span>
+
+        @endif
     </div>
 
-    <div class="form-group">
-        <label for="dataDasar">Data Dasar</label>
+    <div class="form-group required">
+        <label for="dataDasar" class="control-label">Data Dasar</label>
         <input class="form-control" placeholder="Data Dasar" type="text" name="dataDasar">
+        @if ($errors->has('dataDasar'))
+
+            <span class="text-danger">The 'data dasar' field is required.</span>
+
+        @endif
     </div>
 
-    <div class="form-group">
-        <label for="dataDasar">Deskripsi Data</label>
+    <div class="form-group required">
+        <label for="deskripsiData" class="control-label">Deskripsi Data</label>
         <textarea class="form-control" placeholder="Deskripsi Data" name="deskripsiData"></textarea>
+        @if ($errors->has('deskripsiData'))
+
+            <span class="text-danger">The 'deskripsi data' field is required.</span>
+
+        @endif
     </div>
   </div>
 
 <div class="tab panel-group">
     <div class="panel panel-primary">
         <div class="panel-heading">
-            <label>Wali Data</label>
+            <label class="control-label">Wali Data</label>
         </div>
         <div class="panel-body">
-            <div class="form-group">
+            <div class="form-group required">
                 <select name="wldinas" class="form-control" id="walDinas">
                     <option disabled selected>Pilih Dinas/Instansi</option>
                     @foreach($data as $ids)
                         <option value="{{$ids->id_nama_dinas}}"> {{$ids->nama_dinas}} </option>
                     @endforeach                    
                 </select>
+                @if ($errors->has('wldinas'))
+
+                    <span class="text-danger">The 'nama dinas' field is required.</span>
+
+                @endif
             </div>
-            <div class="form-group">
+            <div class="form-group required">
                 <select name="wlbidang" class="form-control" id="walBidang">
                     <option disabled selected value="">Pilih Bidang Kedinasan</option>                    
                 </select>
+                @if ($errors->has('wlbidang'))
+
+                    <span class="text-danger">The 'bidang kedinasan' field is required.</span>
+
+                @endif
             </div>
-            <div class="form-group">
+            <div class="form-group required">
                 <select name="wlseksi" class="form-control" id="walSeksi">
                     <option disabled selected value="">Pilih Seksi Kedinasan</option>
-                    
                 </select>
+                @if ($errors->has('wlseksi'))
+
+                    <span class="text-danger">The 'seksi kedinasan' field is required.</span>
+
+                @endif
             </div>
         </div>
     </div>
 
     <div class="panel panel-primary">
         <div class="panel-heading">
-            <label>Pengelola Data</label>
+            <label class="control-label">Pengelola Data</label>
         </div>
         <div class="panel-body">
-            <div class="form-group">
+            <div class="form-group required">
                 <select name="pldinas" class="form-control" id="pelDinas">
-                    <option>Pilih Dinas/Instansi</option>                    
+                    <option disabled selected>Pilih Dinas/Instansi</option>                    
                     @foreach($data as $ids)
                         <option value="{{$ids->id_nama_dinas}}"> {{$ids->nama_dinas}} </option>
                     @endforeach                    
                 </select>
+                @if ($errors->has('pldinas'))
+
+                    <span class="text-danger">The 'nama dinas' field is required.</span>
+
+                @endif
             </div>
-            <div class="form-group">
+            <div class="form-group required">
                 <select name="plbidang" class="form-control" id="pelBidang">
                     <option disabled selected value="">Pilih Bidang Kedinasan</option>                    
                 </select>
+                @if ($errors->has('plbidang'))
+
+                    <span class="text-danger">The 'bidang kedinasan' field is required.</span>
+
+                @endif
             </div>
-            <div class="form-group">
+            <div class="form-group required">
                 <select name="plseksi" class="form-control" id="pelSeksi">
                     <option disabled selected value="">Pilih Seksi Kedinasan</option>
-                    
                 </select>
+                @if ($errors->has('plseksi'))
+
+                    <span class="text-danger">The 'seksi kedinasan' field is required.</span>
+
+                @endif
             </div>
         </div>
     </div>
 
     <div class="panel panel-primary">
         <div class="panel-heading">
-            <label>Sumber Data</label>
+            <label class="control-label">Sumber Data</label>
         </div>
         <div class="panel-body">
-            <div class="form-group">
+            <div class="form-group required">
                 <select name="sbdinas" class="form-control" id="subDinas">
-                    <option>Pilih Dinas/Instansi</option>
+                    <option disabled selected>Pilih Dinas/Instansi</option>
                     @foreach($data as $ids)
                         <option value="{{$ids->id_nama_dinas}}"> {{$ids->nama_dinas}} </option>
                     @endforeach                    
                 </select>
+                @if ($errors->has('sbdinas'))
+
+                    <span class="text-danger">The 'nama dinas' field is required.</span>
+
+                @endif
             </div>
-            <div class="form-group">
+            <div class="form-group required">
                 <select name="sbbidang" class="form-control" id="subBidang">
                     <option disabled selected value="">Pilih Bidang Kedinasan</option>
-                
                 </select>
+                @if ($errors->has('sbbidang'))
+
+                    <span class="text-danger">The 'bidang kedinasan' field is required.</span>
+
+                @endif
             </div>
-            <div class="form-group">
+            <div class="form-group required">
                 <select name="sbseksi" class="form-control" id="subSeksi">
                     <option disabled selected value="">Pilih Seksi Kedinasan</option>            
                 </select>
+                @if ($errors->has('sbseksi'))
+
+                    <span class="text-danger">The 'seksi kedinasan' field is required.</span>
+
+                @endif
             </div>
         </div>
     </div>
   </div>
   
   <div class="tab">
-    <div class="form-group">
-        <label for="caraPengumpulanData">Cara Pengumpulan Data</label>
+    <div class="form-group required">
+        <label for="caraPengumpulanData" class="control-label">Cara Pengumpulan Data</label>
         <br>
         <label for="" class="radio-inline">
             <input type="radio" name="caraPengumpulanData" id="sistem" value="sistem" class="radio" onclick="ShowHideDiv()">Sistem
@@ -224,15 +318,25 @@
             <div class="form-group">
                 <label for="namaSistem">Nama Sistem</label>
                 <input type="text" name="namaSistem" placeholder="Nama Sistem" class="form-control">
+                <!-- @if ($errors->has('namaSistem'))
+
+                    <span class="text-danger">{{ $errors->first('namaSistem') }}</span>
+
+                @endif -->
             </div>
 
             <div class="form-group">
                 <label for="alamatSistem">URL / Alamat Sistem</label>
                 <input type="text" name="alamatSistem" placeholder="http://example.com" class="form-control">
+                <!-- @if ($errors->has('alamatSistem'))
+
+                    <span class="text-danger">{{ $errors->first('alamatSistem') }}</span>
+
+                @endif -->
             </div>
 
-            <div class="form-group">
-                <label for="pemilikSistem">Pemilik Sistem</label>
+            <div class="form-group required">
+                <label for="pemilikSistem" class="control-label">Pemilik Sistem</label>
                 <br>
                 <label class="radio-inline">
                     <input type="radio" name="pemilikSistem" id="pusat" value="pusat" class="radio">Pusat
@@ -256,11 +360,21 @@
             <div class="form-group">
                 <label for="lembagaSurvey">Lembaga Survey</label>
                 <input type="text" name="lembagaSurvey" placeholder="Lembaga Survey" class="form-control">
+                <!-- @if ($errors->has('lembagaSurvey'))
+
+                    <span class="text-danger">{{ $errors->first('lembagaSurvey') }}</span>
+
+                @endif -->
             </div>
 
             <div class="form-group">
                 <label for="waktuSurvey">Waktu Survey</label>
                 <input type="date" name="waktuSurvey" placeholder="31/12/2017" class="form-control">
+                <!-- @if ($errors->has('waktuSurvey'))
+
+                    <span class="text-danger">{{ $errors->first('waktuSurvey') }}</span>
+
+                @endif -->
             </div>
         </div>
     </div>
@@ -269,9 +383,10 @@
   </div>
 
   <div class="tab">
-    <div class="form-group">
-        <label for="kemunculanData">Periode Kemunculan Data</label>
+    <div class="form-group required">
+        <label for="kemunculanData" class="control-label">Periode Kemunculan Data</label>
         <select name="kemunculanData" id="" class="form-control">
+            <option disabled selected>Pilih Periode</option>
             <option>Harian</option>
             <option>Mingguan</option>
             <option>Bulanan</option>
@@ -280,35 +395,57 @@
             <option>Tahunan</option>
             <option>Sewaktu-waktu</option>
         </select>
+        @if ($errors->has('kemunculanData'))
+
+            <span class="text-danger">The 'periode kemunculan data' field is required.</span>
+
+        @endif
     </div>
-    <div class="form-group">
-        <label for="tahunTersedia">Tahun Mulai Tersedia</label>
-        <input type="text" class="form-control" placeholder="2017" name="tahunTersedia">
+    <div class="form-group required">
+        <label for="tahunTersedia" class="control-label">Tahun Mulai Tersedia</label>
+        <input type="text" class="form-control" placeholder="YYYY" name="tahunTersedia">
+        @if ($errors->has('tahunTersedia'))
+
+            <span class="text-danger">The 'tahun mulai tersedia' field is required.</span>
+
+        @endif
     </div>
   </div>
 
 
   <div class="tab">
     <h2>Distribusi / Penyajian Data</h2>
-    <div class="form-group">
-        <label for="tipeData">Tipe Data</label>
+    <div class="form-group required">
+        <label for="tipeData" class="control-label">Tipe Data</label>
         <select name="tipeData" id="" class="form-control">
+            <option disabled selected>Pilih Tipe Data</option>
             <option>Data yang Dikecualikan</option>
             <option>Data yang Diperoleh Serta-merta</option>
             <option>Data yang Diperoleh Berkala</option>        
             <option>Data yang Diperoleh Sewaktu-waktu</option>
         </select>
+        @if ($errors->has('tipeData'))
+
+            <span class="text-danger">The 'tipe data' field is required.</span>
+
+        @endif
     </div>
 
-    <div class="form-group">
-        <label for="levelGeo">Level Penyajian Data Secara Geografis</label>
+    <div class="form-group required">
+        <label for="levelGeo" class="control-label">Level Penyajian Data Secara Geografis</label>
         <select class="form-control" name="levelGeo">
+          <option disabled selected>Pilih Level Penyajian Data Secara Geografis</option>  
           <option>RT</option>
           <option>RW</option>
           <option>Kelurahan</option>
           <option>Kecamatan</option>
           <option>Kota</option>
         </select>
+        @if ($errors->has('levelGeo'))
+
+            <span class="text-danger">The 'level penyajian data secara geografis' field is required.</span>
+
+        @endif
     </div>
 
     <div class="form-group">
@@ -318,19 +455,32 @@
   </div>
 
   <div class="tab">
-    <div class="form-group">
-        <label for="penanggungJawab">Penanggung Jawab Data</label>
+    <div class="form-group required">
+        <label for="penanggungJawab" class="control-label">Penanggung Jawab Data</label>
         <input placeholder="Penanggung Jawab" oninput="this.className = ''" name="penanggungJawab" class="form-control">
+        @if ($errors->has('penanggungJawab'))
+
+            <span class="text-danger">The 'penanggung jawab' field is required.</span>
+
+        @endif
     </div>
 
-    <div class="form-group">
-        <label for="kontak">Kontak Penanggung Jawab</label>
-        <input placeholder="Kontak Penanggung Jawab" oninput="this.className = ''" name="kontak" class="form-control">
+    <div class="form-group required">
+        <label for="kontak" class="control-label">Kontak Penanggung Jawab</label>
+        <input placeholder="08xxxxxxxxxx" oninput="this.className = ''" name="kontak" class="form-control">
+        @if ($errors->has('kontak'))
+
+            <span class="text-danger">The 'kontak penanggung jawab' field is required.</span>
+
+        @endif
     </div>
   </div>
 
   <!-- Data End -->
   <div style="overflow:auto;">
+    <div style="float:left;">
+        <span class="text-danger">Note : <bintang>*</bintang> Required</span>
+    </div>
     <div style="float:right;">
       <button type="button" class="btn btn-danger" id="prevBtn" onclick="nextPrev(-1)">Previous</button>
       <button type="button" class="btn btn-primary" id="nextBtn" onclick="nextPrev(1)">Next</button>
