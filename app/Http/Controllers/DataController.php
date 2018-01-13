@@ -10,6 +10,8 @@ use App\Pengumpulan;
 use App\Sumber;
 use App\Wali;
 use App\Kedinasan;
+use DB;
+
 use Response;
 
 class DataController extends Controller
@@ -44,15 +46,15 @@ class DataController extends Controller
      */
     public function store(Request $request)
     {
-        $this->validate($request, [
-            'judulData' => 'required',
-            'dataDasar' => 'required',
-            'deskripsiData' => 'required',
-            'caraPengumpulanData' => 'required',
-            'tipeData' => 'required',
-            'penanggungJawab' => 'required',
-            'kontak' => 'required'
-        ]);
+        // $this->validate($request, [
+        //     'judulData' => 'required',
+        //     'dataDasar' => 'required',
+        //     'deskripsiData' => 'required',
+        //     'caraPengumpulanData' => 'required',
+        //     'tipeData' => 'required',
+        //     'penanggungJawab' => 'required',
+        //     'kontak' => 'required'
+        // ]);
 
         $data = new Data;
         $pengelola = new Pengelola;
@@ -75,19 +77,62 @@ class DataController extends Controller
         $data->penanggung_jawab_data = $request->input('penanggungJawab');
         $data->kontak_penanggung_jawab = $request->input('kontak');
 
-        $id_wali = $request->input('wldinas');
-        $wali->nama_dinas = Kedinasan::distinct()->select('nama_dinas')->where('id_nama_dinas', $id_wali)->get();
-        
-        $wali->bidang_kedinasan = $request->input('wlbidang');
-        $wali->seksi_kedinasan = $request->input('wlseksi');
+        // Mengambil data dari wali
+        $id_wali_1 = $request->input('wldinas');
+        $wali_1 = DB::select("select distinct nama_dinas from tbl_kedinasan where id_nama_dinas = '$id_wali_1'");
+        foreach($wali_1 as $w) {
+            $wali->nama_dinas = $w->nama_dinas;
+        }
 
-        $pengelola->nama_dinas = $request->input('pldinas');
-        $pengelola->bidang_kedinasan = $request->input('plbidang');
-        $pengelola->seksi_kedinasan = $request->input('plseksi');
+        $id_wali_2 = $request->input('wlbidang');
+        $wali_2 = DB::select("select distinct bidang_kedinasan from tbl_kedinasan where id_bidang_kedinasan = '$id_wali_2'");
+        foreach($wali_2 as $w) {
+            $wali->bidang_kedinasan = $w->bidang_kedinasan;
+        }
 
-        $sumber->nama_dinas = $request->input('sbdinas');
-        $sumber->bidang_kedinasan = $request->input('sbbidang');
-        $sumber->seksi_kedinasan = $request->input('sbseksi');
+        $id_wali_3 = $request->input('wlseksi');
+        $wali_3 = DB::select("select distinct seksi_kedinasan from tbl_kedinasan where id_seksi_kedinasan = '$id_wali_3'");
+        foreach($wali_3 as $w) {
+            $wali->seksi_kedinasan = $w->seksi_kedinasan;
+        }
+
+        // Mengambil data dari pengelola
+
+        $id_pengelola = $request->input('pldinas');
+        $pengelolanya = DB::select("select distinct nama_dinas from tbl_kedinasan where id_nama_dinas = '$id_pengelola'");
+        foreach($pengelolanya as $p) {
+            $pengelola->nama_dinas = $p->nama_dinas;
+        }
+
+        $id_pengelola = $request->input('plbidang');
+        $pengelolanya = DB::select("select distinct bidang_kedinasan from tbl_kedinasan where id_bidang_kedinasan = '$id_pengelola'");
+        foreach($pengelolanya as $p) {
+            $pengelola->bidang_kedinasan = $p->bidang_kedinasan;
+        }
+
+        $id_pengelola = $request->input('plseksi');
+        $pengelolanya = DB::select("select distinct seksi_kedinasan from tbl_kedinasan where id_seksi_kedinasan = '$id_pengelola'");
+        foreach($pengelolanya as $p) {
+            $pengelola->seksi_kedinasan = $p->seksi_kedinasan;
+        }
+
+        $id_sumber = $request->input('sbdinas');
+        $sumbernya = DB::select("select distinct nama_dinas from tbl_kedinasan where id_nama_dinas = '$id_sumber'");
+        foreach($sumbernya as $s) {
+            $sumber->nama_dinas = $s->nama_dinas;
+        }
+
+        $id_sumber = $request->input('sbbidang');
+        $sumbernya = DB::select("select distinct bidang_kedinasan from tbl_kedinasan where id_bidang_kedinasan = '$id_sumber'");
+        foreach($sumbernya as $s) {
+            $sumber->bidang_kedinasan = $s->bidang_kedinasan;
+        }
+
+        $id_sumber = $request->input('sbseksi');
+        $sumbernya = DB::select("select distinct seksi_kedinasan from tbl_kedinasan where id_seksi_kedinasan = '$id_sumber'");
+        foreach($sumbernya as $s) {
+            $sumber->seksi_kedinasan = $s->seksi_kedinasan;
+        }
 
         if($request->input('caraPengumpulanData') == "sistem") {
             $pengumpulan->nama_sistem = $request->input('namaSistem');
