@@ -40,6 +40,7 @@
                     @endforeach
             </tbody>
         </table>
+        {{ $data->links() }}
         @else
             <strong><p>Table Is Empty</p></strong>
         @endif

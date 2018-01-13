@@ -23,7 +23,7 @@ class DataController extends Controller
      */
     public function index()
     {
-        $data = Data::All();
+        $data = Data::paginate(5);
         return view('table-view', compact('data'));
     }
 
