@@ -414,19 +414,19 @@
 
     <div class="form-group">
         <label for="level">Penglevelan Kategori Lain</label>
-        <input placeholder="Jika Ada" oninput="this.className = ''" name="level" class="form-control" value="{{$data->penglevelan_kategori_lain}}">
+        <input placeholder="Jika Ada" oninput="this.className = 'form-control'" name="level" class="form-control" value="{{$data->penglevelan_kategori_lain}}">
     </div>
   </div>
 
   <div class="tab">
     <div class="form-group">
         <label for="penanggungJawab">Penanggung Jawab Data</label>
-        <input placeholder="Penanggung Jawab" oninput="this.className = ''" name="penanggungJawab" class="form-control" value="{{$data->penanggung_jawab_data}}">
+        <input placeholder="Penanggung Jawab" oninput="this.className = 'form-control'" name="penanggungJawab" class="form-control" value="{{$data->penanggung_jawab_data}}">
     </div>
 
     <div class="form-group">
         <label for="kontak">Kontak Penanggung Jawab</label>
-        <input placeholder="Kontak Penanggung Jawab" oninput="this.className = ''" name="kontak" class="form-control" value="{{$data->kontak_penanggung_jawab}}">
+        <input placeholder="Kontak Penanggung Jawab" oninput="this.className = 'form-control'" name="kontak" class="form-control" value="{{$data->kontak_penanggung_jawab}}">
     </div>
   </div>
 
