@@ -41,7 +41,11 @@ class DataController extends Controller
     {
         $data = Kedinasan::distinct()->select('id_nama_dinas', 'nama_dinas')->get();
         $sektor = DB::select('select * from sektor_data');
-        return view('create',['data'=>$data, 'sektor'=>$sektor]);
+        $jenis = DB::select('select * from jenis_data');
+        $periode = DB::select('select * from periode_kemunculan_data');
+        $tipe = DB::select('select * from tipe_data');
+        $geo = DB::select('select * from level_penyajian_data_secara_geografis');
+        return view('create',['data'=>$data, 'sektor'=>$sektor, 'jenis'=>$jenis, 'periode'=>$periode, 'tipe'=>$tipe, 'geo'=>$geo]);
     }
 
     /**

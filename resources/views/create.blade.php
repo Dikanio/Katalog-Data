@@ -57,12 +57,13 @@
 
     bintang{
         color:red;
-        font-size: 22px;
+        font-size: 20px;
         font-weight: bold;
     }
 
     .text-danger{
         color: red;
+        font-size: 13px;
         font-style: italic;
     }
 </style>
@@ -81,7 +82,7 @@
   <div class="tab">
     <div class="form-group required required">
         <label for="judulData" class="control-label">Judul Data</label>
-        <input class="form-control" placeholder="Judul Data" type="text" name="judulData">
+        <input class="form-control" placeholder="Judul Data" type="text" name="judulData" value="{{ Request::old('judulData') }}">
         @if ($errors->has('judulData'))
 
             <span class="text-danger">The 'judul data' field is required.</span>
@@ -92,11 +93,9 @@
         <label for="jenisData" class="control-label">Jenis Data</label>
         <select class="form-control" name="jenisData">
             <option disabled selected>Pilih Jenis Data</option>
-    		<option value="Data Master">Data Master</option>
-    		<option value="Data Agregat">Data Agregat</option>
-    		<option value="Data Transaksi">Data Transaksi</option>
-    		<option value="Log Data">Log Data</option>
-    		<option value="Data Laporan">Data Laporan</option>
+    		@foreach($jenis as $j)
+                <option @if(old('jenisData') == $j->jenis_data) {{ 'selected' }} @endif>{{$j->jenis_data}}</option>
+            @endforeach
     	</select>
         @if ($errors->has('jenisData'))
 
@@ -110,7 +109,7 @@
         <select name="sektorData" id="" class="form-control">
             <option disabled selected>Pilih Sektor Data</option>
             @foreach($sektor as $s)
-                <option>{{$s->nama_sektor}}</option>
+                <option @if(old('sektorData') == $s->nama_sektor) {{ 'selected' }} @endif>{{$s->nama_sektor}}</option>
             @endforeach
         </select>
         @if ($errors->has('sektorData'))
@@ -122,7 +121,7 @@
 
     <div class="form-group required">
         <label for="dataDasar" class="control-label">Data Dasar</label>
-        <input class="form-control" placeholder="Data Dasar" type="text" name="dataDasar">
+        <input class="form-control" placeholder="Data Dasar" type="text" name="dataDasar" value="{{ Request::old('dataDasar') }}">
         @if ($errors->has('dataDasar'))
 
             <span class="text-danger">The 'data dasar' field is required.</span>
@@ -132,7 +131,7 @@
 
     <div class="form-group required">
         <label for="deskripsiData" class="control-label">Deskripsi Data</label>
-        <textarea class="form-control" placeholder="Deskripsi Data" name="deskripsiData"></textarea>
+        <textarea class="form-control" placeholder="Deskripsi Data" name="deskripsiData">{{ Request::old('deskripsiData') }}</textarea>
         @if ($errors->has('deskripsiData'))
 
             <span class="text-danger">The 'deskripsi data' field is required.</span>
@@ -151,7 +150,7 @@
                 <select name="wldinas" class="form-control" id="walDinas">
                     <option disabled selected>Pilih Dinas/Instansi</option>
                     @foreach($data as $ids)
-                        <option value="{{$ids->id_nama_dinas}}"> {{$ids->nama_dinas}} </option>
+                        <option value="{{$ids->id_nama_dinas}}" @if(old('wldinas') == $ids->id_nama_dinas) {{ 'selected' }} @endif> {{$ids->nama_dinas}} </option>
                     @endforeach                    
                 </select>
                 @if ($errors->has('wldinas'))
@@ -192,7 +191,7 @@
                 <select name="pldinas" class="form-control" id="pelDinas">
                     <option disabled selected>Pilih Dinas/Instansi</option>                    
                     @foreach($data as $ids)
-                        <option value="{{$ids->id_nama_dinas}}"> {{$ids->nama_dinas}} </option>
+                        <option value="{{$ids->id_nama_dinas}}" @if(old('pldinas') == $ids->id_nama_dinas) {{ 'selected' }} @endif> {{$ids->nama_dinas}} </option>
                     @endforeach                    
                 </select>
                 @if ($errors->has('pldinas'))
@@ -233,7 +232,7 @@
                 <select name="sbdinas" class="form-control" id="subDinas">
                     <option disabled selected>Pilih Dinas/Instansi</option>
                     @foreach($data as $ids)
-                        <option value="{{$ids->id_nama_dinas}}"> {{$ids->nama_dinas}} </option>
+                        <option value="{{$ids->id_nama_dinas}}" @if(old('sbdinas') == $ids->id_nama_dinas) {{ 'selected' }} @endif> {{$ids->nama_dinas}} </option>
                     @endforeach                    
                 </select>
                 @if ($errors->has('sbdinas'))
@@ -289,7 +288,7 @@
         <div class="panel-body">
             <div class="form-group">
                 <label for="namaSistem">Nama Sistem</label>
-                <input type="text" name="namaSistem" placeholder="Nama Sistem" class="form-control">
+                <input type="text" name="namaSistem" placeholder="Nama Sistem" class="form-control" value="{{ Request::old('namaSistem') }}">
                 <!-- @if ($errors->has('namaSistem'))
 
                     <span class="text-danger">{{ $errors->first('namaSistem') }}</span>
@@ -299,7 +298,7 @@
 
             <div class="form-group">
                 <label for="alamatSistem">URL / Alamat Sistem</label>
-                <input type="text" name="alamatSistem" placeholder="http://example.com" class="form-control">
+                <input type="text" name="alamatSistem" placeholder="http://example.com" class="form-control" value="{{ Request::old('alamatSistem') }}">
                 <!-- @if ($errors->has('alamatSistem'))
 
                     <span class="text-danger">{{ $errors->first('alamatSistem') }}</span>
@@ -311,13 +310,13 @@
                 <label for="pemilikSistem" class="control-label">Pemilik Sistem</label>
                 <br>
                 <label class="radio-inline">
-                    <input type="radio" name="pemilikSistem" id="pusat" value="pusat" class="radio">Pusat
+                    <input type="radio" name="pemilikSistem" id="pusat" value="pusat" class="radio" @if (Request::old('pemilikSistem') == 'pusat') checked="checked" @endif>Pusat
                 </label>
                 <label for="" class="radio-inline">
-                    <input type="radio" name="pemilikSistem" id="kota" value="kota" class="radio">Kota
+                    <input type="radio" name="pemilikSistem" id="kota" value="kota" class="radio" @if (Request::old('pemilikSistem') == 'kota') checked="checked" @endif>Kota
                 </label>
                 <label for="" class="radio-inline">
-                    <input type="radio" name="pemilikSistem" id="lainnya" value="lainnya" class="radio">Lainnya
+                    <input type="radio" name="pemilikSistem" id="lainnya" value="lainnya" class="radio" @if (Request::old('pemilikSistem') == 'lainnya') checked="checked" @endif>Lainnya
                 </label>
             </div>
         </div>
@@ -331,7 +330,7 @@
         <div class="panel-body">
             <div class="form-group">
                 <label for="lembagaSurvey">Lembaga Survey</label>
-                <input type="text" name="lembagaSurvey" placeholder="Lembaga Survey" class="form-control">
+                <input type="text" name="lembagaSurvey" placeholder="Lembaga Survey" class="form-control" value="{{ Request::old('lembagaSurvey') }}">
                 <!-- @if ($errors->has('lembagaSurvey'))
 
                     <span class="text-danger">{{ $errors->first('lembagaSurvey') }}</span>
@@ -341,7 +340,7 @@
 
             <div class="form-group">
                 <label for="waktuSurvey">Waktu Survey</label>
-                <input type="date" name="waktuSurvey" placeholder="31/12/2017" class="form-control">
+                <input type="date" name="waktuSurvey" placeholder="31/12/2017" class="form-control" value="{{ Request::old('waktuSurvey') }}">
                 <!-- @if ($errors->has('waktuSurvey'))
 
                     <span class="text-danger">{{ $errors->first('waktuSurvey') }}</span>
@@ -359,13 +358,9 @@
         <label for="kemunculanData" class="control-label">Periode Kemunculan Data</label>
         <select name="kemunculanData" id="" class="form-control">
             <option disabled selected>Pilih Periode</option>
-            <option>Harian</option>
-            <option>Mingguan</option>
-            <option>Bulanan</option>
-            <option>Triwulan</option>
-            <option>Semesteran</option>
-            <option>Tahunan</option>
-            <option>Sewaktu-waktu</option>
+            @foreach($periode as $p)
+                <option @if(old('kemunculanData') == $p->periode_kemunculan) {{ 'selected' }} @endif>{{$p->periode_kemunculan}}</option>
+            @endforeach
         </select>
         @if ($errors->has('kemunculanData'))
 
@@ -375,7 +370,7 @@
     </div>
     <div class="form-group required">
         <label for="tahunTersedia" class="control-label">Tahun Mulai Tersedia</label>
-        <input type="text" class="form-control" placeholder="YYYY" name="tahunTersedia">
+        <input type="text" class="form-control" placeholder="YYYY" name="tahunTersedia" value="{{ Request::old('tahunTersedia') }}">
         @if ($errors->has('tahunTersedia'))
 
             <span class="text-danger">The 'tahun mulai tersedia' field is required.</span>
@@ -391,10 +386,9 @@
         <label for="tipeData" class="control-label">Tipe Data</label>
         <select name="tipeData" id="" class="form-control">
             <option disabled selected>Pilih Tipe Data</option>
-            <option>Data yang Dikecualikan</option>
-            <option>Data yang Diperoleh Serta-merta</option>
-            <option>Data yang Diperoleh Berkala</option>        
-            <option>Data yang Diperoleh Sewaktu-waktu</option>
+            @foreach($tipe as $t)
+                <option @if(old('tipeData') == $t->tipe_data) {{ 'selected' }} @endif>{{$t->tipe_data}}</option>
+            @endforeach
         </select>
         @if ($errors->has('tipeData'))
 
@@ -407,11 +401,9 @@
         <label for="levelGeo" class="control-label">Level Penyajian Data Secara Geografis</label>
         <select class="form-control" name="levelGeo">
           <option disabled selected>Pilih Level Penyajian Data Secara Geografis</option>  
-          <option>RT</option>
-          <option>RW</option>
-          <option>Kelurahan</option>
-          <option>Kecamatan</option>
-          <option>Kota</option>
+          @foreach($geo as $g)
+                <option @if(old('levelGeo') == $g->level_penyajian) {{ 'selected' }} @endif>{{$g->level_penyajian}}</option>
+            @endforeach
         </select>
         @if ($errors->has('levelGeo'))
 
@@ -422,24 +414,24 @@
 
     <div class="form-group">
         <label for="level">Penglevelan Kategori Lain</label>
-        <input placeholder="Jika Ada" oninput="this.className = 'form-control'" name="level" class="form-control">
+        <input placeholder="Jika Ada" oninput="this.className = 'form-control'" name="level" class="form-control" value="{{ Request::old('level') }}">
     </div>
   </div>
 
   <div class="tab">
     <div class="form-group required">
         <label for="penanggungJawab" class="control-label">Penanggung Jawab Data</label>
-        <input placeholder="Penanggung Jawab" oninput="this.className = 'form-control'" name="penanggungJawab" class="form-control">
+        <input placeholder="Penanggung Jawab" oninput="this.className = 'form-control'" name="penanggungJawab" class="form-control" value="{{ Request::old('penanggungJawab') }}">
         @if ($errors->has('penanggungJawab'))
 
-            <span class="text-danger`">The 'penanggung jawab' field is required.</span>
+            <span class="text-danger">The 'penanggung jawab' field is required.</span>
 
         @endif
     </div>
 
     <div class="form-group required">
         <label for="kontak" class="control-label">Kontak Penanggung Jawab</label>
-        <input placeholder="08xxxxxxxxxx" oninput="this.className = 'form-control'" name="kontak" class="form-control">
+        <input placeholder="08xxxxxxxxxx" oninput="this.className = 'form-control'" name="kontak" class="form-control" value="{{ Request::old('kontak') }}">
         @if ($errors->has('kontak'))
 
             <span class="text-danger">The 'kontak penanggung jawab' field is required.</span>
