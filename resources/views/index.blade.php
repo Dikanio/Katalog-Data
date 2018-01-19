@@ -1,6 +1,4 @@
-@if (Route::has('login'))
-@auth
-<!DOCTYPE html>
+ <!DOCTYPE html>
 <html>
 <head>
     <title>{{ config('app.name', 'Katalog') }}</title>
@@ -32,9 +30,3 @@
     @yield('js')
 </body>
 </html>
-
-
-@else
-    <script type="text/javascript">window.location = "/login";</script>
-@endauth
-@endif

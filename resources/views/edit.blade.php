@@ -47,9 +47,6 @@
 <form id="regForm" action="{{url('/data/update', base64_encode($data->id_data) )}}" method="POST">
     {{csrf_field()}}
 
-  <!-- Error 405 - Method Not Allowed -->
-    <input type="hidden" name="_method" value="PUT">
-
   <!-- One "tab" for each step in the form: -->
   <div class="tab">
     <div class="form-group">
@@ -87,56 +84,13 @@
     <div class="form-group">
         <label for="sektorData">Sektor Data</label>
         <select name="sektorData" id="" class="form-control">
-
-            <!-- Otomatisasi Manual -->
-            @if($data->jenis_data == 'Bidang Kesehatan')
-                <option selected>Bidang Kesehatan</option>
-            @else <option>Bidang Kesehatan</option>
-            @endif
-            @if($data->jenis_data == 'Bidang Pekerjaan Umum Dan Penataan Ruang')
-                <option selected>Bidang Pekerjaan Umum Dan Penataan Ruang</option>
-            @else <option>Bidang Pekerjaan Umum Dan Penataan Ruang</option>
-            @endif
-            @if($data->jenis_data == 'Bidang Ketenteraman Dan Ketertiban Umum Serta Perlindungan')
-                <option selected>Bidang Ketenteraman Dan Ketertiban Umum Serta Perlindungan</option>
-            @else <option>Bidang Ketenteraman Dan Ketertiban Umum Serta Perlindungan</option>
-            @endif
-            @if($data->jenis_data == 'Bidang Ketenteraman Dan Ketertiban Umum Serta Perlindungan')
-                <option selected>Bidang Sosial</option>
-            @else <option>Bidang Sosial</option>
-            @endif
-            @if($data->jenis_data == 'Bidang Tenaga Kerja')
-                <option selected>Bidang Tenaga Kerja</option>
-            @else <option>Bidang Tenaga Kerja</option>
-            @endif
-            
-            <!-- Ini belum otomatisasi -->
-        <!--
-            <option>Bidang Pemberdayaan Perempuan Dan Pelindungan Anak</option>
-            <option>Bidang Pangan</option>
-            <option>Bidang Pertanahan</option>
-            <option>Bidang Lingkungan Hidup</option>
-            <option>Bidang Administrasi Kependudukan Dan Pencatatan Sipil</option>
-            <option>Bidang Pemberdayaan Masyarakat Dan Desa</option>
-            <option>Bidang Pengendalian Penduduk Dan Keluarga Berencana</option>
-            <option>Bidang Perhubungan</option>
-            <option>Bidang Komunikasi Dan Informatika</option>
-            <option>Bidang Koperasi, Usaha Kecil, Dan Menengah</option>
-            <option>Bidang Penanaman Modal</option>
-            <option>Bidang Kepemudaan dan Olahraga</option>
-            <option>Bidang Statistik</option>
-            <option>Bidang Persandian</option>
-            <option>Bidang Kebudayaan</option>
-            <option>Bidang Perpustakaan</option>
-            <option>Bidang Kearsipan</option>
-            <option>Bidang Pariwisata</option>
-            <option>Bidang Pertanian</option>
-            <option>Bidang Kehutanan</option>
-            <option>Bidang Perdagangan</option>
-            <option>Bidang Perindustrian</option>
-            <option>Bidang Transmigrasi</option>
-            <option>Bidang Otonomi Daerah, Pemerintahan Umum, Administrasi Keuangan Daerah, Perangkat Daerah, Kepegawaian, Persandian</option>
-        -->
+            @foreach($sektor as $s)
+                @if($s->nama_sektor == $sektorTerpilih)
+                    <option selected>{{ $s->nama_sektor }}</option>
+                @elseif($s->nama_sektor != $sektorTerpilih)
+                    <option>{{ $s->nama_sektor }}</option>
+                @endif
+            @endforeach
         </select>
     </div>
 
@@ -158,19 +112,39 @@
         </div>
         <div class="panel-body">
             <div class="form-group">
-                <select name="wldinas" class="form-control">
-                    <option>Pilih Dinas/Instansi</option>                    
+                <select name="wldinas" class="form-control" id="walDinas">
+                    <option disabled>Pilih Dinas/Instansi</option>
+                    @foreach($dinas as $ids)
+                        @if( $ids->nama_dinas == $data->wali->nama_dinas )
+                            <option selected value="{{$ids->id_nama_dinas}}"> {{$ids->nama_dinas}} </option>
+                        @else
+                            <option value="{{$ids->id_nama_dinas}}"> {{$ids->nama_dinas}} </option>
+                        @endif
+                    @endforeach
                 </select>
             </div>
             <div class="form-group">
-                <select name="wlbidang" class="form-control">
-                    <option>Pilih Bidang Kedinasan</option>                    
+                <select name="wlbidang" class="form-control" id="walBidang">
+                    <option disabled>Pilih Bidang Kedinasan</option>                    
+                    @foreach($bidang_wali as $ids)
+                        @if( $ids->bidang_kedinasan == $data->wali->bidang_kedinasan )
+                            <option selected value="{{$ids->id_bidang_kedinasan}}"> {{$ids->bidang_kedinasan}} </option>
+                        @else
+                            <option value="{{$ids->id_bidang_kedinasan}}"> {{$ids->bidang_kedinasan}} </option>
+                        @endif
+                    @endforeach
                 </select>
             </div>
             <div class="form-group">
-                <select name="wlseksi" class="form-control">
-                    <option>Pilih Seksi Kedinasan</option>
-                    
+                <select name="wlseksi" class="form-control" id="walSeksi">
+                    <option disabled>Pilih Seksi Kedinasan</option>
+                    @foreach($seksi_wali as $ids)
+                        @if( $ids->seksi_kedinasan == $data->wali->seksi_kedinasan )
+                            <option selected value="{{$ids->id_seksi_kedinasan}}"> {{$ids->seksi_kedinasan}} </option>
+                        @else
+                            <option value="{{$ids->id_seksi_kedinasan}}"> {{$ids->seksi_kedinasan}} </option>
+                        @endif
+                    @endforeach
                 </select>
             </div>
         </div>
@@ -182,19 +156,39 @@
         </div>
         <div class="panel-body">
             <div class="form-group">
-                <select name="pldinas" class="form-control">
-                    <option>Pilih Dinas/Instansi</option>                    
+                <select name="pldinas" class="form-control" id="pelDinas">
+                    <option disabled>Pilih Dinas/Instansi</option>
+                    @foreach($dinas as $ids)
+                        @if( $ids->nama_dinas == $data->pengelola->nama_dinas )
+                            <option selected value="{{$ids->id_nama_dinas}}"> {{$ids->nama_dinas}} </option>
+                        @else
+                            <option value="{{$ids->id_nama_dinas}}"> {{$ids->nama_dinas}} </option>
+                        @endif
+                    @endforeach
                 </select>
             </div>
             <div class="form-group">
-                <select name="plbidang" class="form-control">
-                    <option>Pilih Bidang Kedinasan</option>                    
+                <select name="plbidang" class="form-control" id="pelBidang">
+                    <option disabled>Pilih Bidang Kedinasan</option>                    
+                    @foreach($bidang_pengelola as $ids)
+                        @if( $ids->bidang_kedinasan == $data->pengelola->bidang_kedinasan )
+                            <option selected value="{{$ids->id_bidang_kedinasan}}"> {{$ids->bidang_kedinasan}} </option>
+                        @else
+                            <option value="{{$ids->id_bidang_kedinasan}}"> {{$ids->bidang_kedinasan}} </option>
+                        @endif
+                    @endforeach
                 </select>
             </div>
             <div class="form-group">
-                <select name="plseksi" class="form-control">
-                    <option>Pilih Seksi Kedinasan</option>
-                    
+                <select name="plseksi" class="form-control" id="pelSeksi">
+                    <option disabled>Pilih Seksi Kedinasan</option>
+                    @foreach($seksi_pengelola as $ids)
+                        @if( $ids->seksi_kedinasan == $data->pengelola->seksi_kedinasan )
+                            <option selected value="{{$ids->id_seksi_kedinasan}}"> {{$ids->seksi_kedinasan}} </option>
+                        @else
+                            <option value="{{$ids->id_seksi_kedinasan}}"> {{$ids->seksi_kedinasan}} </option>
+                        @endif
+                    @endforeach
                 </select>
             </div>
         </div>
@@ -206,20 +200,39 @@
         </div>
         <div class="panel-body">
             <div class="form-group">
-                <select name="sbdinas" class="form-control">
-                    <option>Pilih Dinas/Instansi</option>
-                    
+                <select name="sbdinas" class="form-control" id="subDinas">
+                    <option disabled>Pilih Dinas/Instansi</option>
+                    @foreach($dinas as $ids)
+                        @if( $ids->nama_dinas == $data->sumber->nama_dinas )
+                            <option selected value="{{$ids->id_nama_dinas}}"> {{$ids->nama_dinas}} </option>
+                        @else
+                            <option value="{{$ids->id_nama_dinas}}"> {{$ids->nama_dinas}} </option>
+                        @endif
+                    @endforeach
                 </select>
             </div>
             <div class="form-group">
-                <select name="sbbidang" class="form-control">
-                    <option>Pilih Bidang Kedinasan</option>
-                
+                <select name="sbbidang" class="form-control" id="subBidang">
+                    <option disabled>Pilih Bidang Kedinasan</option>                    
+                    @foreach($bidang_sumber as $ids)
+                        @if( $ids->bidang_kedinasan == $data->sumber->bidang_kedinasan )
+                            <option selected value="{{$ids->id_bidang_kedinasan}}"> {{$ids->bidang_kedinasan}} </option>
+                        @else
+                            <option value="{{$ids->id_bidang_kedinasan}}"> {{$ids->bidang_kedinasan}} </option>
+                        @endif
+                    @endforeach
                 </select>
             </div>
             <div class="form-group">
-                <select name="sbseksi" class="form-control">
-                    <option>Pilih Seksi Kedinasan</option>            
+                <select name="sbseksi" class="form-control" id="subSeksi">
+                    <option disabled>Pilih Seksi Kedinasan</option>
+                    @foreach($seksi_sumber as $ids)
+                        @if( $ids->seksi_kedinasan == $data->sumber->seksi_kedinasan )
+                            <option selected value="{{$ids->id_seksi_kedinasan}}"> {{$ids->seksi_kedinasan}} </option>
+                        @else
+                            <option value="{{$ids->id_seksi_kedinasan}}"> {{$ids->seksi_kedinasan}} </option>
+                        @endif
+                    @endforeach
                 </select>
             </div>
         </div>
@@ -355,13 +368,13 @@
     <div class="form-group">
         <label for="kemunculanData">Periode Kemunculan Data</label>
         <select name="kemunculanData" id="" class="form-control">
-            <option>Harian</option>
-            <option>Mingguan</option>
-            <option>Bulanan</option>
-            <option>Triwulan</option>
-            <option>Semesteran</option>
-            <option>Tahunan</option>
-            <option>Sewaktu-waktu</option>
+            @foreach($periode as $p)
+                @if($p->periode_kemunculan == $data->periode_kemunculan_data)
+                    <option selected>{{ $p->periode_kemunculan }}</option>
+                @else
+                    <option>{{ $p->periode_kemunculan }}</option>
+                @endif
+            @endforeach
         </select>
     </div>
     <div class="form-group">
@@ -376,21 +389,26 @@
     <div class="form-group">
         <label for="tipeData">Tipe Data</label>
         <select name="tipeData" id="" class="form-control">
-            <option>Data yang Dikecualikan</option>
-            <option>Data yang Diperoleh Serta-merta</option>
-            <option>Data yang Diperoleh Berkala</option>        
-            <option>Data yang Diperoleh Sewaktu-waktu</option>
+            @foreach($tipe_data as $t)
+                @if($t->tipe_data == $data->tipe_data)
+                    <option selected>{{ $t->tipe_data }}</option>
+                @else
+                    <option>{{ $t->tipe_data }}</option>
+                @endif
+            @endforeach
         </select>
     </div>
 
     <div class="form-group">
         <label for="levelGeo">Level Penyajian Data Secara Geografis</label>
         <select class="form-control" name="levelGeo">
-          <option>RT</option>
-          <option>RW</option>
-          <option>Kelurahan</option>
-          <option>Kecamatan</option>
-          <option>Kota</option>
+            @foreach($level_penyajian as $l)
+                @if($l->level_penyajian == $data->level_penyajian_data)
+                    <option selected>{{ $l->level_penyajian }}</option>
+                @else
+                    <option>{{ $l->level_penyajian }}</option>
+                @endif
+            @endforeach
         </select>
     </div>
 
@@ -429,6 +447,10 @@
     <span class="step"></span>
   </div>
 </form>
+
+<script type="text/javascript" src='{{URL::asset("js/jquery-1.12.4.min.js")}}'></script>
+<script type="text/javascript" src='{{URL::asset("js/chained-selection.js")}}'></script>
+
 @endsection
 
 @section('js')

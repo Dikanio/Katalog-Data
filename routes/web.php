@@ -15,13 +15,7 @@
 //     return view('create');
 // });
 
-Route::get('/', function() {
-    if(Auth::guest()){
-        return view('auth.login');
-    } else {
-        return redirect('home');
-    }
-});
+Route::get('/', 'DataController@index');
 
 Route::post('/data/store', 'DataController@store');
 
@@ -35,6 +29,9 @@ Route::get('/data/create/getSeksi/{param}','DataController@getSeksi');
 Route::get('/data', 'DataController@index');
 
 Route::get('/data/edit/{id}', 'DataController@edit');
+Route::get('/data/edit/{id}/getBidang/{param}','DataController@getBidang2');
+Route::get('/data/edit/{id}/getSeksi/{param}','DataController@getSeksi2');
+
 Route::post('/data/update/{id}', 'DataController@update');
 
 Route::get('/data/detail/{id}', 'DataController@show');

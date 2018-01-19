@@ -7,7 +7,6 @@
     $("#walDinas").change(function() {
 
             $.getJSON(host + "/getBidang/" + $("#walDinas option:selected").val(), function(data) {
-             //console.log(data);            
                 var temp = [];
                 //CONVERT INTO ARRAY
                 $.each(data, function(key, value) {

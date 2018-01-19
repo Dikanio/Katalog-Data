@@ -109,37 +109,9 @@
         <label for="sektorData" class="control-label">Sektor Data</label>
         <select name="sektorData" id="" class="form-control">
             <option disabled selected>Pilih Sektor Data</option>
-            <option>Bidang Kesehatan</option>
-            <option>Bidang Pekerjaan Umum Dan Penataan Ruang</option>
-            <option>Bidang Perumahan Dan Kawasan Permukiman</option>
-            <option>Bidang Ketenteraman Dan Ketertiban Umum Serta Perlindungan</option>
-            <option>Bidang Sosial</option>
-            <option>Bidang Tenaga Kerja</option>
-            <option>Bidang Pemberdayaan Perempuan Dan Pelindungan Anak</option>
-            <option>Bidang Pangan</option>
-            <option>Bidang Pertanahan</option>
-            <option>Bidang Lingkungan Hidup</option>
-            <option>Bidang Administrasi Kependudukan Dan Pencatatan Sipil</option>
-            <option>Bidang Pemberdayaan Masyarakat Dan Desa</option>
-            <option>Bidang Pengendalian Penduduk Dan Keluarga Berencana</option>
-            <option>Bidang Perhubungan</option>
-            <option>Bidang Komunikasi Dan Informatika</option>
-            <option>Bidang Koperasi, Usaha Kecil, Dan Menengah</option>
-            <option>Bidang Penanaman Modal</option>
-            <option>Bidang Kepemudaan dan Olahraga</option>
-            <option>Bidang Statistik</option>
-            <option>Bidang Persandian</option>
-            <option>Bidang Kebudayaan</option>
-            <option>Bidang Perpustakaan</option>
-            <option>Bidang Kearsipan</option>
-            <option>Bidang Pariwisata</option>
-            <option>Bidang Pertanian</option>
-            <option>Bidang Kehutanan</option>
-            <option>Bidang Perdagangan</option>
-            <option>Bidang Perindustrian</option>
-            <option>Bidang Transmigrasi</option>
-            <option>Bidang Otonomi Daerah, Pemerintahan Umum, Administrasi Keuangan Daerah, Perangkat Daerah, Kepegawaian, Persandian</option>
-       
+            @foreach($sektor as $s)
+                <option>{{$s->nama_sektor}}</option>
+            @endforeach
         </select>
         @if ($errors->has('sektorData'))
 
@@ -450,24 +422,24 @@
 
     <div class="form-group">
         <label for="level">Penglevelan Kategori Lain</label>
-        <input placeholder="Jika Ada" oninput="this.className = ''" name="level" class="form-control">
+        <input placeholder="Jika Ada" oninput="this.className = 'form-control'" name="level" class="form-control">
     </div>
   </div>
 
   <div class="tab">
     <div class="form-group required">
         <label for="penanggungJawab" class="control-label">Penanggung Jawab Data</label>
-        <input placeholder="Penanggung Jawab" oninput="this.className = ''" name="penanggungJawab" class="form-control">
+        <input placeholder="Penanggung Jawab" oninput="this.className = 'form-control'" name="penanggungJawab" class="form-control">
         @if ($errors->has('penanggungJawab'))
 
-            <span class="text-danger">The 'penanggung jawab' field is required.</span>
+            <span class="text-danger`">The 'penanggung jawab' field is required.</span>
 
         @endif
     </div>
 
     <div class="form-group required">
         <label for="kontak" class="control-label">Kontak Penanggung Jawab</label>
-        <input placeholder="08xxxxxxxxxx" oninput="this.className = ''" name="kontak" class="form-control">
+        <input placeholder="08xxxxxxxxxx" oninput="this.className = 'form-control'" name="kontak" class="form-control">
         @if ($errors->has('kontak'))
 
             <span class="text-danger">The 'kontak penanggung jawab' field is required.</span>
@@ -475,6 +447,8 @@
         @endif
     </div>
   </div>
+
+    <br>
 
   <!-- Data End -->
   <div style="overflow:auto;">

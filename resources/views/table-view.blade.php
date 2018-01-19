@@ -43,6 +43,7 @@
         {{ $data->links() }}
         @else
             <strong><p>Table Is Empty</p></strong>
+            <a href="/data/create">Create Data</a>
         @endif
     </div>
 @endsection
