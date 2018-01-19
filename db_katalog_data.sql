@@ -1,6 +1,6 @@
 /*
-SQLyog Ultimate v12.09 (64 bit)
-MySQL - 10.1.26-MariaDB : Database - db_katalog_data
+SQLyog Ultimate v12.09 (32 bit)
+MySQL - 10.1.29-MariaDB : Database - db_katalog_data
 *********************************************************************
 */
 
@@ -15,6 +15,20 @@ MySQL - 10.1.26-MariaDB : Database - db_katalog_data
 CREATE DATABASE /*!32312 IF NOT EXISTS*/`db_katalog_data` /*!40100 DEFAULT CHARACTER SET latin1 */;
 
 USE `db_katalog_data`;
+
+/*Table structure for table `jenis_data` */
+
+DROP TABLE IF EXISTS `jenis_data`;
+
+CREATE TABLE `jenis_data` (
+  `id_jenis` int(11) NOT NULL AUTO_INCREMENT,
+  `jenis_data` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`id_jenis`)
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
+
+/*Data for the table `jenis_data` */
+
+insert  into `jenis_data`(`id_jenis`,`jenis_data`) values (1,'Data Master'),(2,'Data Agregat'),(3,'Data Transaksi'),(4,'Log Data'),(5,'Data Laporan');
 
 /*Table structure for table `level_penyajian_data_secara_geografis` */
 
@@ -231,11 +245,11 @@ CREATE TABLE `users` (
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `users_email_unique` (`email`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 /*Data for the table `users` */
 
-insert  into `users`(`id`,`name`,`email`,`password`,`remember_token`,`created_at`,`updated_at`) values (1,'Fahri','mzfahri620@gmail.com','$2y$10$PF67LTNGnvo5f2XXzCF3Y.iy5MElMnZba7hwIoOlHtwifF/73MmWG',NULL,'2018-01-19 06:02:05','2018-01-19 06:02:05');
+insert  into `users`(`id`,`name`,`email`,`password`,`remember_token`,`created_at`,`updated_at`) values (1,'Fahri','mzfahri620@gmail.com','$2y$10$PF67LTNGnvo5f2XXzCF3Y.iy5MElMnZba7hwIoOlHtwifF/73MmWG',NULL,'2018-01-19 06:02:05','2018-01-19 06:02:05'),(2,'Heru','heruherdiansyah21@gmail.com','$2y$10$v.G9bMAPcVy0gbHyHwoFEOlKApPobSlWU1IoOjsHwtlw1A6ok0ms.','1nQeRmJtK86VSGW72gHAo77MsCKk5qFioqE6V1pn1rG6lU5PByJ83ias7whc','2018-01-19 10:48:29','2018-01-19 10:48:29');
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
 /*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
