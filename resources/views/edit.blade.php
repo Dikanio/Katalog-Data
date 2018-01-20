@@ -84,7 +84,7 @@
         <input class="form-control" placeholder="Judul Data" type="text" name="judulData" value="{{$data->judul_data}}">
         @if ($errors->has('judulData'))
 
-            <span class="text-danger">The 'judul data' field is required.</span>
+            <span class="text-danger">'Judul Data' harus diisi.</span>
 
         @endif
     </div>
@@ -116,7 +116,7 @@
         </select>
         @if ($errors->has('jenisData'))
 
-            <span class="text-danger">The 'jenis data' field is required.</span>
+            <span class="text-danger">'Jenis Data' harus diisi.</span>
 
         @endif
     </div>
@@ -134,7 +134,7 @@
         </select>
         @if ($errors->has('sektorData'))
 
-            <span class="text-danger">The 'sektor data' field is required.</span>
+            <span class="text-danger">'Sektor Data' harus diisi.</span>
 
         @endif
     </div>
@@ -144,7 +144,7 @@
         <input class="form-control" placeholder="Data Dasar" type="text" name="dataDasar" value="{{$data->data_dasar}}">
         @if ($errors->has('dataDasar'))
 
-            <span class="text-danger">The 'data dasar' field is required.</span>
+            <span class="text-danger">'Data Dasar' harus diisi.</span>
 
         @endif
     </div>
@@ -154,7 +154,7 @@
         <textarea class="form-control" placeholder="Deskripsi Data" name="deskripsiData">{{$data->deskripsi_data}}</textarea>
         @if ($errors->has('deskripsiData'))
 
-            <span class="text-danger">The 'deskripsi data' field is required.</span>
+            <span class="text-danger">'Deskripsi Data' harus diisi.</span>
 
         @endif
     </div>
@@ -179,7 +179,7 @@
                 </select>
                 @if ($errors->has('wldinas'))
 
-                    <span class="text-danger">The 'nama dinas' field is required.</span>
+                    <span class="text-danger">'Nama Dinas' harus diisi.</span>
 
                 @endif
             </div>
@@ -196,7 +196,7 @@
                 </select>
                 @if ($errors->has('wlbidang'))
 
-                    <span class="text-danger">The 'bidang kedinasan' field is required.</span>
+                    <span class="text-danger">'Bidang Kedinasan' harus diisi.</span>
 
                 @endif
             </div>
@@ -213,7 +213,7 @@
                 </select>
                 @if ($errors->has('wlseksi'))
 
-                    <span class="text-danger">The 'seksi kedinasan' field is required.</span>
+                    <span class="text-danger">'Seksi Kedinasan' harus diisi.</span>
 
                 @endif
             </div>
@@ -238,7 +238,7 @@
                 </select>
                 @if ($errors->has('pldinas'))
 
-                    <span class="text-danger">The 'nama dinas' field is required.</span>
+                    <span class="text-danger">'Nama Dinas' harus diisi.</span>
 
                 @endif
             </div>
@@ -255,7 +255,7 @@
                 </select>
                 @if ($errors->has('plbidang'))
 
-                    <span class="text-danger">The 'bidang kedinasan' field is required.</span>
+                    <span class="text-danger">'Bidang Kedinasan' harus diisi.</span>
 
                 @endif
             </div>
@@ -272,7 +272,7 @@
                 </select>
                 @if ($errors->has('plseksi'))
 
-                    <span class="text-danger">The 'seksi kedinasan' field is required.</span>
+                    <span class="text-danger">'Seksi Kedinasan' harus diisi.</span>
 
                 @endif
             </div>
@@ -297,7 +297,7 @@
                 </select>
                 @if ($errors->has('sbdinas'))
 
-                    <span class="text-danger">The 'nama dinas' field is required.</span>
+                    <span class="text-danger">'Nama Dinas' harus diisi.</span>
 
                 @endif
             </div>
@@ -314,7 +314,7 @@
                 </select>
                 @if ($errors->has('sbbidang'))
 
-                    <span class="text-danger">The 'bidang kedinasan' field is required.</span>
+                    <span class="text-danger">'Bidang Kedinasan' harus diisi.</span>
 
                 @endif
             </div>
@@ -331,7 +331,7 @@
                 </select>
                 @if ($errors->has('sbseksi'))
 
-                    <span class="text-danger">The 'seksi kedinasan' field is required.</span>
+                    <span class="text-danger">'Seksi Kedinasan' harus diisi.</span>
 
                 @endif
             </div>
@@ -478,7 +478,7 @@
         </select>
         @if ($errors->has('kemunculanData'))
 
-            <span class="text-danger">The 'periode kemunculan data' field is required.</span>
+            <span class="text-danger">'Periode Kemunculan Data' harus diisi.</span>
 
         @endif
     </div>
@@ -487,7 +487,7 @@
         <input type="text" class="form-control" placeholder="2017" name="tahunTersedia" value="{{$data->tahun_mulai_tersedia}}">
         @if ($errors->has('tahunTersedia'))
 
-            <span class="text-danger">The 'tahun mulai tersedia' field is required.</span>
+            <span class="text-danger">'Tahun Mulai Tersedia' harus diisi.</span>
 
         @endif
     </div>
@@ -509,7 +509,7 @@
         </select>
         @if ($errors->has('tipeData'))
 
-            <span class="text-danger">The 'tipe data' field is required.</span>
+            <span class="text-danger">'Tipe Data' harus diisi.</span>
 
         @endif
     </div>
@@ -527,7 +527,7 @@
         </select>
         @if ($errors->has('levelGeo'))
 
-            <span class="text-danger">The 'level penyajian data secara geografis' field is required.</span>
+            <span class="text-danger">'Level Penyajian Data Secara Geografis' harus diisi.</span>
 
         @endif
     </div>
@@ -544,7 +544,7 @@
         <input placeholder="Penanggung Jawab" oninput="this.className = 'form-control'" name="penanggungJawab" class="form-control" value="{{$data->penanggung_jawab_data}}">
         @if ($errors->has('penanggungJawab'))
 
-            <span class="text-danger">The 'penanggung jawab' field is required.</span>
+            <span class="text-danger">'Penanggung Jawab Data' harus diisi.</span>
 
         @endif
     </div>
@@ -554,7 +554,7 @@
         <input placeholder="Kontak Penanggung Jawab" oninput="this.className = 'form-control'" name="kontak" class="form-control" value="{{$data->kontak_penanggung_jawab}}">
         @if ($errors->has('kontak'))
 
-            <span class="text-danger">The 'kontak penanggung jawab' field is required.</span>
+            <span class="text-danger">'Kontak Penanggung Jawab' harus diisi.</span>
 
         @endif
     </div>

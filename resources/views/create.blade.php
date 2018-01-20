@@ -66,6 +66,10 @@
         font-size: 13px;
         font-style: italic;
     }
+
+    .distribusi{
+        font-size: 15px;
+    }
 </style>
 @endsection
 
@@ -85,7 +89,7 @@
         <input class="form-control" placeholder="Judul Data" type="text" name="judulData" value="{{ Request::old('judulData') }}">
         @if ($errors->has('judulData'))
 
-            <span class="text-danger">The 'judul data' field is required.</span>
+            <span class="text-danger">'Judul Data' harus diisi.</span>
 
         @endif
     </div>
@@ -99,7 +103,7 @@
     	</select>
         @if ($errors->has('jenisData'))
 
-            <span class="text-danger">The 'jenis data' field is required.</span>
+            <span class="text-danger">'Jenis Data' harus diisi.</span>
 
         @endif
     </div>
@@ -114,7 +118,7 @@
         </select>
         @if ($errors->has('sektorData'))
 
-            <span class="text-danger">The 'sektor data' field is required.</span>
+            <span class="text-danger">'Sektor Data' harus diisi.</span>
 
         @endif
     </div>
@@ -124,7 +128,7 @@
         <input class="form-control" placeholder="Data Dasar" type="text" name="dataDasar" value="{{ Request::old('dataDasar') }}">
         @if ($errors->has('dataDasar'))
 
-            <span class="text-danger">The 'data dasar' field is required.</span>
+            <span class="text-danger">'Data Dasar' harus diisi.</span>
 
         @endif
     </div>
@@ -134,7 +138,7 @@
         <textarea class="form-control" placeholder="Deskripsi Data" name="deskripsiData">{{ Request::old('deskripsiData') }}</textarea>
         @if ($errors->has('deskripsiData'))
 
-            <span class="text-danger">The 'deskripsi data' field is required.</span>
+            <span class="text-danger">'Deskripsi Data' harus diisi.</span>
 
         @endif
     </div>
@@ -155,7 +159,7 @@
                 </select>
                 @if ($errors->has('wldinas'))
 
-                    <span class="text-danger">The 'nama dinas' field is required.</span>
+                    <span class="text-danger">'Nama Dinas' harus diisi.</span>
 
                 @endif
             </div>
@@ -165,7 +169,7 @@
                 </select>
                 @if ($errors->has('wlbidang'))
 
-                    <span class="text-danger">The 'bidang kedinasan' field is required.</span>
+                    <span class="text-danger">'Bidang Kedinasan' harus diisi.</span>
 
                 @endif
             </div>
@@ -175,7 +179,7 @@
                 </select>
                 @if ($errors->has('wlseksi'))
 
-                    <span class="text-danger">The 'seksi kedinasan' field is required.</span>
+                    <span class="text-danger">'Seksi Kedinasan' harus diisi.</span>
 
                 @endif
             </div>
@@ -196,7 +200,7 @@
                 </select>
                 @if ($errors->has('pldinas'))
 
-                    <span class="text-danger">The 'nama dinas' field is required.</span>
+                    <span class="text-danger">'Nama Dinas' harus diisi.</span>
 
                 @endif
             </div>
@@ -206,7 +210,7 @@
                 </select>
                 @if ($errors->has('plbidang'))
 
-                    <span class="text-danger">The 'bidang kedinasan' field is required.</span>
+                    <span class="text-danger">'Bidang Kedinasan' harus diisi.</span>
 
                 @endif
             </div>
@@ -216,7 +220,7 @@
                 </select>
                 @if ($errors->has('plseksi'))
 
-                    <span class="text-danger">The 'seksi kedinasan' field is required.</span>
+                    <span class="text-danger">'Seksi Kedinasan' harus diisi.</span>
 
                 @endif
             </div>
@@ -237,7 +241,7 @@
                 </select>
                 @if ($errors->has('sbdinas'))
 
-                    <span class="text-danger">The 'nama dinas' field is required.</span>
+                    <span class="text-danger">'Nama Dinas' harus diisi.</span>
 
                 @endif
             </div>
@@ -247,7 +251,7 @@
                 </select>
                 @if ($errors->has('sbbidang'))
 
-                    <span class="text-danger">The 'bidang kedinasan' field is required.</span>
+                    <span class="text-danger">'Bidang Kedinasan' harus diisi.</span>
 
                 @endif
             </div>
@@ -257,7 +261,7 @@
                 </select>
                 @if ($errors->has('sbseksi'))
 
-                    <span class="text-danger">The 'seksi kedinasan' field is required.</span>
+                    <span class="text-danger">'Seksi Kedinasan' harus diisi.</span>
 
                 @endif
             </div>
@@ -364,7 +368,7 @@
         </select>
         @if ($errors->has('kemunculanData'))
 
-            <span class="text-danger">The 'periode kemunculan data' field is required.</span>
+            <span class="text-danger">'Periode Kemunculan Data' harus diisi.</span>
 
         @endif
     </div>
@@ -373,48 +377,54 @@
         <input type="text" class="form-control" placeholder="YYYY" name="tahunTersedia" value="{{ Request::old('tahunTersedia') }}">
         @if ($errors->has('tahunTersedia'))
 
-            <span class="text-danger">The 'tahun mulai tersedia' field is required.</span>
+            <span class="text-danger">'Tahun Mulai Tersedia' harus diisi.</span>
 
         @endif
     </div>
   </div>
 
 
-  <div class="tab">
-    <h2>Distribusi / Penyajian Data</h2>
-    <div class="form-group required">
-        <label for="tipeData" class="control-label">Tipe Data</label>
-        <select name="tipeData" id="" class="form-control">
-            <option disabled selected>Pilih Tipe Data</option>
-            @foreach($tipe as $t)
-                <option @if(old('tipeData') == $t->tipe_data) {{ 'selected' }} @endif>{{$t->tipe_data}}</option>
-            @endforeach
-        </select>
-        @if ($errors->has('tipeData'))
+  <div class="tab panel-group">
+    <div class="panel panel-primary">
+        <div class="panel-heading">
+            <label class="distribusi">Distribusi / Penyajian Data</label>
+        </div>
+        <div class="panel-body">
+            <div class="form-group required">
+                <label for="tipeData" class="control-label">Tipe Data</label>
+                <select name="tipeData" id="" class="form-control">
+                    <option disabled selected>Pilih Tipe Data</option>
+                    @foreach($tipe as $t)
+                        <option @if(old('tipeData') == $t->tipe_data) {{ 'selected' }} @endif>{{$t->tipe_data}}</option>
+                    @endforeach
+                </select>
+                @if ($errors->has('tipeData'))
 
-            <span class="text-danger">The 'tipe data' field is required.</span>
+                    <span class="text-danger">'Tipe Data' harus diisi.</span>
 
-        @endif
-    </div>
+                @endif
+            </div>
 
-    <div class="form-group required">
-        <label for="levelGeo" class="control-label">Level Penyajian Data Secara Geografis</label>
-        <select class="form-control" name="levelGeo">
-          <option disabled selected>Pilih Level Penyajian Data Secara Geografis</option>  
-          @foreach($geo as $g)
-                <option @if(old('levelGeo') == $g->level_penyajian) {{ 'selected' }} @endif>{{$g->level_penyajian}}</option>
-            @endforeach
-        </select>
-        @if ($errors->has('levelGeo'))
+            <div class="form-group required">
+                <label for="levelGeo" class="control-label">Level Penyajian Data Secara Geografis</label>
+                <select class="form-control" name="levelGeo">
+                  <option disabled selected>Pilih Level Penyajian Data Secara Geografis</option>  
+                  @foreach($geo as $g)
+                        <option @if(old('levelGeo') == $g->level_penyajian) {{ 'selected' }} @endif>{{$g->level_penyajian}}</option>
+                    @endforeach
+                </select>
+                @if ($errors->has('levelGeo'))
 
-            <span class="text-danger">The 'level penyajian data secara geografis' field is required.</span>
+                    <span class="text-danger">'Level Penyajian Data Secara Geografis' harus diisi.</span>
 
-        @endif
-    </div>
+                @endif
+            </div>
 
-    <div class="form-group">
-        <label for="level">Penglevelan Kategori Lain</label>
-        <input placeholder="Jika Ada" oninput="this.className = 'form-control'" name="level" class="form-control" value="{{ Request::old('level') }}">
+            <div class="form-group">
+                <label for="level">Penglevelan Kategori Lain</label>
+                <input placeholder="Jika Ada" oninput="this.className = 'form-control'" name="level" class="form-control" value="{{ Request::old('level') }}">
+            </div>
+        </div>
     </div>
   </div>
 
@@ -424,7 +434,7 @@
         <input placeholder="Penanggung Jawab" oninput="this.className = 'form-control'" name="penanggungJawab" class="form-control" value="{{ Request::old('penanggungJawab') }}">
         @if ($errors->has('penanggungJawab'))
 
-            <span class="text-danger">The 'penanggung jawab' field is required.</span>
+            <span class="text-danger">'Penanggung Jawab Data' harus diisi.</span>
 
         @endif
     </div>
@@ -434,7 +444,7 @@
         <input placeholder="08xxxxxxxxxx" oninput="this.className = 'form-control'" name="kontak" class="form-control" value="{{ Request::old('kontak') }}">
         @if ($errors->has('kontak'))
 
-            <span class="text-danger">The 'kontak penanggung jawab' field is required.</span>
+            <span class="text-danger">'Kontak Penanggung Jawab' harus diisi.</span>
 
         @endif
     </div>
